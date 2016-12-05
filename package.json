@@ -1,6 +1,6 @@
 {
   "name": "nativescript-fabric",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "A NativeScript Plugin for fabric.io",
   "scripts": {
     "clean": "git checkout samples/angular/package.json && rm -rf node_modules target tmp && mkdir -p tmp && mkdir -p tmp/angular && cd samples/angular && rm -rf node_modules hooks platforms",
