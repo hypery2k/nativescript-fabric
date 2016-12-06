@@ -32,7 +32,7 @@ Add the following entries to your *app/App_Resources/App/Android.xml*
   <uses-permission android:name="android.permission.INTERNET" />
 </manifest>
 ```
-For more details see [https://fabric.io/kits/android/crashlytics/install](fabric.io/kits/android/crashlytics/install).
+For more details see [fabric.io/kits/android/crashlytics](https://fabric.io/kits/android/crashlytics/install).
 
 ### iOS
 
@@ -41,4 +41,4 @@ Add a run script to your build phase:
 "${PODS_ROOT}/Fabric/run" 88.. b1...
 ```
 
-For more details see [https://fabric.io/kits/ios/crashlytics/manual-install?step=1](fabric.io/kits/ios/crashlytics/manual-install?step=1).
+For more details see [fabric.io/kits/ios/crashlytics](https://fabric.io/kits/ios/crashlytics/manual-install?step=1).
