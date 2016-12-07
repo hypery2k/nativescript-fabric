@@ -2,6 +2,8 @@
 
 [![npm version](https://badge.fury.io/js/nativescript-fabric.svg)](http://badge.fury.io/js/nativescript-fabric)
 
+Plugin is still **WIP**
+
 # Usage
 
 ## Installation
