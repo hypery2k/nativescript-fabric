@@ -1,5 +1,5 @@
-export interface Crashlytics {
+export interface CrashlyticsPlugin {
     init?: Function;
 }
-export interface Android extends Crashlytics {
+export interface Android extends CrashlyticsPlugin {
 }
