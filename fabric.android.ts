@@ -28,6 +28,4 @@ class CrashlyticsAndroidPlugin implements Android {
     }
 }
 
-export function CrashlyticsPlugin():Android {
-    return new CrashlyticsAndroidPlugin();
-}
+export var Crashlytics: Android = new CrashlyticsAndroidPlugin()
