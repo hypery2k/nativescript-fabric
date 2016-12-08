@@ -1,4 +1,2 @@
 import { Android } from "./fabric.common";
-export declare class CrashlyticsPlugin implements Android {
-    constructor();
-}
+export declare var Crashlytics: Android;

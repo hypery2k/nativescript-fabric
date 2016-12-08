@@ -7,24 +7,36 @@ class CrashlyticsAndroidPlugin implements Android {
     constructor() {
     }
 
-    init() {
+    getErrorDetails(args: any): any {
+        let error = args.android || args.ios;
+        if (error.nativeException) {
+            error = {
+                name: error.name,
+                message: error.message,
+                stack: error.stackTrace
+            };
+        }
+        return error;
+    }
+
+    init(): void {
         if (application.android) {
             application.android.on('activityStarted', activityEventData => {
                 // Enable Fabric crash reporting
                 io.fabric.sdk.android.Fabric.with(activityEventData.activity, [new com.crashlytics.android.Crashlytics()]);
             });
             application.on('uncaughtError', args => {
-                var error = args.android || args.ios;
-                if (error.nativeException) {
-                    error = {
-                        name: error.name,
-                        message: error.message,
-                        stack: error.stackTrace
-                    };
-                }
-                com.crashlytics.android.Crashlytics.logException(error);
+                com.crashlytics.android.Crashlytics.getInstance().core.logException(this.getErrorDetails(args));
             });
         }
+    }
+
+
+    log(error: any, msg?: string): void {
+        if (!!msg) {
+            com.crashlytics.android.Crashlytics.getInstance().core.log(msg);
+        }
+        com.crashlytics.android.Crashlytics.getInstance().core.logException(this.getErrorDetails(error));
     }
 }
 

@@ -16,3 +16,25 @@ dependencies {
     transitive = true;
   }
 }
+
+Properties props = new Properties()
+try {
+  props.load(file('src/main/res/fabric.properties').newDataInputStream())
+} catch (Exception ex) {
+  throw new GradleException("Missing fabric.properties, check the fabric.properties.sample file.");
+}
+
+task createBuildID() {
+  def sw = new StringWriter()
+  def xml = new groovy.xml.MarkupBuilder(sw)
+  xml.mkp.xmlDeclaration(version: "1.0", encoding: "utf-8", standalone: "no")
+  xml.resources() {
+    string(name: "com.crashlytics.android.build_id", java.util.UUID.randomUUID().toString())
+  }
+  def stringsFile = new File("src/main/res/values/com_crashlytics_build_id.xml")
+  stringsFile.write(sw.toString())
+}
+
+project.afterEvaluate {
+  preBuild.dependsOn createBuildID
+}
