@@ -3,7 +3,9 @@
     "version": "0.0.5",
     "description": "A NativeScript Plugin for fabric.io",
     "scripts": {
+        "clean": "",
         "build": "tsc",
+        "test": "npm run build",
         "changelog": "conventional-changelog -p angular -i CHANGELOG.md -s",
         "changelog:add": "git add CHANGELOG.md && git commit -m 'updated CHANGELOG.md'",
         "release:pre": "npm run clean && npm run test",
