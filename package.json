@@ -3,7 +3,7 @@
     "version": "0.0.5",
     "description": "A NativeScript Plugin for fabric.io",
     "scripts": {
-        "clean": "",
+        "clean": "npm i",
         "build": "tsc",
         "test": "npm run build",
         "changelog": "conventional-changelog -p angular -i CHANGELOG.md -s",
