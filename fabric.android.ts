@@ -8,7 +8,7 @@ class CrashlyticsAndroidPlugin implements Android {
     }
 
     getErrorDetails(args: any): any {
-        let error = args.android || args.ios;
+        let error = args.android;
         if (error.nativeException) {
             error = {
                 name: error.name,
@@ -40,4 +40,4 @@ class CrashlyticsAndroidPlugin implements Android {
     }
 }
 
-export var Crashlytics: Android = new CrashlyticsAndroidPlugin()
+export const Fabric: Android = new CrashlyticsAndroidPlugin()

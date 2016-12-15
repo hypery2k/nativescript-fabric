@@ -9,6 +9,6 @@ export interface CrashlyticsPlugin {
     log(error: any, msg?: string);
 }
 
-export interface Android extends CrashlyticsPlugin {
+export interface Android extends CrashlyticsPlugin { }
 
-}
+export interface IOS extends CrashlyticsPlugin { }
