@@ -4,3 +4,5 @@ export interface CrashlyticsPlugin {
 }
 export interface Android extends CrashlyticsPlugin {
 }
+export interface IOS extends CrashlyticsPlugin {
+}
