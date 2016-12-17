@@ -4,6 +4,8 @@
 
 Plugin is still **WIP**
 
+[![NPM](https://nodei.co/npm/nativescript-fabric.png?downloads=true&downloadRank=true&stars=true)](https://nodei.co/npm/nativescript-fabric/)
+
 > Feel free to **donate**
 > 
 > <a href='http://www.pledgie.com/campaigns/33053'><img alt='Click here to lend your support and make a donation at www.pledgie.com !' src='http://www.pledgie.com/campaigns/33053.png?skin_name=chrome' border='0' /></a>
