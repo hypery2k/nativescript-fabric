@@ -4,5 +4,7 @@
  */
 export * from './fabric.android';
 
+export {FabricAppDelegate} from './fabric.ios.appdelegate';
+
 // Export any shared classes, constants, etc.
 export * from './fabric.common';
