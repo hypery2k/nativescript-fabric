@@ -24,6 +24,12 @@ Plugin is still **WIP**
 $ tns plugin add nativescript-fabric
 ```
 
+Or if you want to use the development version (nightly build), which maybe not stable!:
+
+```
+tns plugin add nativescript-fabric@next --save-dev
+```
+
 ### Android
 
 Add the following entries to your *app/App_Resources/App/Android.xml*
