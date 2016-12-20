@@ -7,8 +7,8 @@ export class FabricAppDelegate extends UIResponder implements UIApplicationDeleg
 
     public static ObjCProtocols = [UIApplicationDelegate];
 
-    public applicationDidFinishLaunchingWithOptions(application: UIApplication, launchOptions: any): boolean {
-        Fabric.with([Crashlytics.self]);
+    public applicationDidFinishLaunchingWithOptions(application: UIApplication, launchOptions: NSDictionary<any,any>): boolean {
+        Fabric.with([Crashlytics]);
         return true;
     }
 
