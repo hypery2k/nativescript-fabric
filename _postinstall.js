@@ -1,0 +1,1 @@
+require('nativescript-hook').postinstall(__dirname);

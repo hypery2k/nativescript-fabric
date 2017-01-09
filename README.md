@@ -17,37 +17,31 @@ Plugin is still **WIP**
 
 # Usage
 
+
+
+
 ## Installation
 
 ```
 $ tns plugin add nativescript-fabric
 ```
 
-### Android
-
-Add the following entries to your *app/App_Resources/App/Android.xml*
-```xml
-<?xml version="1.0" encoding="utf-8"?>
-<manifest xmlns:android="http://schemas.android.com/apk/res/android">
-  <application
-      android:allowBackup="true"
-      android:icon="@mipmap/ic_launcher"
-      android:label="@string/app_name"
-      android:theme="@style/AppTheme" >
-      ...
-      </activity>
-      <meta-data
-          android:name="io.fabric.ApiKey"
-          android:value="88..."
-      />
-  </application>
-  <!-- ensure to have this permissions set: -->
-  <uses-permission android:name="android.permission.INTERNET" />
-</manifest>
+Create a file fabric.json in the project root folder: 
 ```
+{
+    apiKey: '',
+    apiSecret:''
+}
+```
+## Additional information
+
+### Android 
+
 For more details see [fabric.io/kits/android/crashlytics](https://fabric.io/kits/android/crashlytics/install).
 
 ### iOS
+
+Create a file fabric.properties in the folder *app*!
 
 Add a run script to your build phase:
 ```
