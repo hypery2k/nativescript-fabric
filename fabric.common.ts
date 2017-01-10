@@ -1,3 +1,6 @@
+import { CrashlyticsPlugin } from './fabric.common.d';
+var INSTANCE: CrashlyticsPlugin;
+
 export interface CrashlyticsPlugin {
     /**
      * Load Plugin
@@ -12,3 +15,11 @@ export interface CrashlyticsPlugin {
 export interface Android extends CrashlyticsPlugin { }
 
 export interface IOS extends CrashlyticsPlugin { }
+
+export function getInstance(T: new () => CrashlyticsPlugin):CrashlyticsPlugin{
+    if(!INSTANCE){
+        INSTANCE = new T();
+    }
+    return INSTANCE;
+}
+

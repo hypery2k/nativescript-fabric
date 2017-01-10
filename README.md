@@ -29,8 +29,8 @@ $ tns plugin add nativescript-fabric
 Create a file fabric.json in the project root folder: 
 ```
 {
-    apiKey: '',
-    apiSecret:''
+    "apiKey": "",
+    "apiSecret": ""
 }
 ```
 ## Additional information

@@ -1,12 +1,19 @@
 import * as application from 'application';
-import { Android } from "./fabric.common";
+import { Android, getInstance } from "./fabric.common";
 
 declare var io: any, com: any;
+
 class CrashlyticsAndroidPlugin implements Android {
 
     constructor() {
     }
 
+
+  /**
+   * Extract error details for Android
+   * @param args
+   * @returns {customLaunchers.android|{base, platform}|boolean|{indeterminate, cancelable, max, progressNumberFormat, progressPercentFormat, progressStyle, secondaryProgress}|any}
+   */
     getErrorDetails(args: any): any {
         let error = args.android;
         if (error.nativeException) {
@@ -19,6 +26,9 @@ class CrashlyticsAndroidPlugin implements Android {
         return error;
     }
 
+    /**
+     * Init Fabric plugin
+     */
     init(): void {
         if (application.android) {
             application.android.on('activityStarted', activityEventData => {
@@ -31,13 +41,24 @@ class CrashlyticsAndroidPlugin implements Android {
         }
     }
 
-
+    /**
+     *
+     * @param error
+     * @param msg
+     */
     log(error: any, msg?: string): void {
         if (!!msg) {
             com.crashlytics.android.Crashlytics.getInstance().core.log(msg);
         }
-        com.crashlytics.android.Crashlytics.getInstance().core.logException(this.getErrorDetails(error));
+        if (!error.android) {
+            com.crashlytics.android.Crashlytics.getInstance().core.log(error);
+        } else {
+            com.crashlytics.android.Crashlytics.getInstance().core.logException(this.getErrorDetails(error));
+        }
     }
 }
 
-export const Fabric: Android = new CrashlyticsAndroidPlugin()
+/**
+ * Create new singelton instance
+ */
+export const Fabric: Android = getInstance(CrashlyticsAndroidPlugin);
