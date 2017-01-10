@@ -5,20 +5,44 @@ export interface CrashlyticsPlugin {
      * Load Plugin
      */
     init: Function;
+
+    /**
+     * Track login events in your app.
+     * @param method of the login
+     * @param success suggest if login was true
+     */
+    logLogin(method: string, success: boolean);
+
+    /**
+     * Track content view events in your app.
+     * @param id to use for view
+     * @param name to use for view
+     * @param type of the view
+     */
+    logContentView(id: string, name: string, type: string);
+
+    /**
+     * Track custom events in your app.
+     * @param withName name to log the event
+     * @param customAttributes to log
+     */
+    logCustomEvent(withName: string, customAttributes: Map<String, String>);
+
     /**
      * Log an error with an optional message
+     * @param error to log, canbe an native error or a object
+     * @param msg additional message
      */
-    log(error: any, msg?: string);
+    logError(error: any, msg?: string);
 }
 
 export interface Android extends CrashlyticsPlugin { }
 
 export interface IOS extends CrashlyticsPlugin { }
 
-export function getInstance(T: new () => CrashlyticsPlugin):CrashlyticsPlugin{
-    if(!INSTANCE){
+export function getInstance(T: new () => CrashlyticsPlugin): CrashlyticsPlugin {
+    if (!INSTANCE) {
         INSTANCE = new T();
     }
     return INSTANCE;
 }
-
