@@ -36,6 +36,27 @@ Create a file fabric.json in the project root folder:
     "apiSecret": ""
 }
 ```
+
+### Android
+
+Add the API-Key to your AndroidManifest.xml:
+
+```
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android" package="__PACKAGE__" android:versionCode="385" android:versionName="1.0.14">
+ ....
+  <application android:name="com.tns.NativeScriptApplication" android:allowBackup="true" android:icon="@drawable/icon" android:label="@string/app_name" android:theme="@style/AppTheme">
+    ...
+    <meta-data android:name="io.fabric.ApiKey" android:value="**<API-KEY>**"/>
+  </application>
+</manifest>
+
+```
+
+### iOS
+
+No manuel setup needed
+
 ## Additional information
 
 ### Android 
