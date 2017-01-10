@@ -1,4 +1,3 @@
-import { CrashlyticsPlugin } from './fabric.common.d';
 var INSTANCE: CrashlyticsPlugin;
 
 export interface CrashlyticsPlugin {
