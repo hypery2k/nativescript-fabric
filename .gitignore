@@ -1,5 +1,7 @@
 *.js.map
 *.js
+*.d.ts
 *.log
+.idea/
 hooks/
 node_modules

@@ -6,14 +6,13 @@
         "removeComments": true,
         "experimentalDecorators": true,
         "noEmitHelpers": true,
-        "noLib": false
+        "noEmitOnError": true,
+        "skipDefaultLibCheck": true,
+        "skipLibCheck": true,
+        "lib": [
+            "es2016"
+        ]
     },
-    "files": [
-        "references",
-        "fabric.common.ts",
-        "fabric.android.ts",
-        "fabric.ios.ts"
-    ],
     "compileOnSave": false,
     "exclude": [
         "node_modules",

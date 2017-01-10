@@ -1,5 +1,6 @@
 # NativeScript Fabric Plugin
 
+[![Build Status](https://travis-ci.org/hypery2k/nativescript-fabric.svg?branch=master)](https://travis-ci.org/hypery2k/nativescript-fabric)
 [![npm version](https://badge.fury.io/js/nativescript-fabric.svg)](http://badge.fury.io/js/nativescript-fabric)
 
 Plugin is still **WIP**
@@ -18,47 +19,44 @@ Plugin is still **WIP**
 
 # Usage
 
+
+
+
 ## Installation
 
 ```
 $ tns plugin add nativescript-fabric
 ```
 
-Or if you want to use the development version (nightly build), which maybe not stable!:
+Create a file fabric.json in the project root folder: 
 
 ```
-tns plugin add nativescript-fabric@next --save-dev
+{
+    "apiKey": "",
+    "apiSecret": ""
+}
 ```
+## Additional information
 
-### Android
+### Android 
 
-Add the following entries to your *app/App_Resources/App/Android.xml*
-```xml
-<?xml version="1.0" encoding="utf-8"?>
-<manifest xmlns:android="http://schemas.android.com/apk/res/android">
-  <application
-      android:allowBackup="true"
-      android:icon="@mipmap/ic_launcher"
-      android:label="@string/app_name"
-      android:theme="@style/AppTheme" >
-      ...
-      </activity>
-      <meta-data
-          android:name="io.fabric.ApiKey"
-          android:value="88..."
-      />
-  </application>
-  <!-- ensure to have this permissions set: -->
-  <uses-permission android:name="android.permission.INTERNET" />
-</manifest>
-```
 For more details see [fabric.io/kits/android/crashlytics](https://fabric.io/kits/android/crashlytics/install).
 
 ### iOS
 
-Add a run script to your build phase:
+For more details see [fabric.io/kits/ios/crashlytics](https://fabric.io/kits/ios/crashlytics/manual-install?step=1).
+
+## API
+
+Init the plugin in your app (for angular apps use main.ts):
+
 ```
-"${PODS_ROOT}/Fabric/run" 88.. b1...
+import {Fabric} from 'nativescript-fabric';
+Fabric.init();
 ```
 
-For more details see [fabric.io/kits/ios/crashlytics](https://fabric.io/kits/ios/crashlytics/manual-install?step=1).
+Afterwards you can use the instance methods for logging (general error logging is already added):
+* `Fabric.logLogin(method: string, success: boolean);`
+* `Fabric.logContentView(id: string, name: string, type: string)`
+* `Fabric.logCustomEvent(withName: string, customAttributes: Map<String, String>)`
+* `Fabric.logError(error: any, msg?: string)`
