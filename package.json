@@ -22,6 +22,8 @@
     "format": "0.2.2",
     "fs-extra": "0.30.0",
     "nativescript-hook": "^0.2.1",
+    "simple-plist": "0.2.1",
+    "xcode": "0.9.1",
     "xmldom": "0.1.22"
   },
   "devDependencies": {

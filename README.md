@@ -41,11 +41,19 @@ For more details see [fabric.io/kits/android/crashlytics](https://fabric.io/kits
 
 ### iOS
 
-Create a file fabric.properties in the folder *app*!
-
-Add a run script to your build phase:
-```
-"${PODS_ROOT}/Fabric/run" 88.. b1...
-```
-
 For more details see [fabric.io/kits/ios/crashlytics](https://fabric.io/kits/ios/crashlytics/manual-install?step=1).
+
+## API
+
+Init the plugin in your app (for angular apps use main.ts):
+
+```
+import {Fabric} from 'nativescript-fabric';
+Fabric.init();
+```
+
+Afterwards you can use the instance methods for logging (general error logging is already added):
+* `Fabric.logLogin(method: string, success: boolean);`
+* `Fabric.logContentView(id: string, name: string, type: string)`
+* `Fabric.logCustomEvent(withName: string, customAttributes: Map<String, String>)`
+* `Fabric.logError(error: any, msg?: string)`
