@@ -1,6 +1,6 @@
 {
   "name": "nativescript-fabric",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "A NativeScript Plugin for fabric.io",
   "scripts": {
     "clean": "npm i",
