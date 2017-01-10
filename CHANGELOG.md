@@ -1,5 +1,11 @@
 <a name="0.1.1"></a>
-## [0.1.1](https://github.com/hypery2k/nativescript-fabric/compare/v0.0.6...v0.1.1) (2017-01-10)
+## [0.1.1](https://github.com/hypery2k/nativescript-fabric/compare/v0.1.0...v0.1.1) (2017-01-10)
+
+### Bug Fixes
+* **prepare-script:** Fix promise error in prepare script ([7d78c2a](https://github.com/hypery2k/nativescript-fabric/commit/7d78c2a))
+
+<a name="0.1.0"></a>
+## [0.1.0](https://github.com/hypery2k/nativescript-fabric/compare/v0.0.6...v0.1.0) (2017-01-10)
 
 
 ### Bug Fixes
