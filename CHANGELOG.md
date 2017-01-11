@@ -1,3 +1,13 @@
+<a name="0.1.3"></a>
+## [0.1.3](https://github.com/hypery2k/nativescript-fabric/compare/v0.1.2...v0.1.3) (2017-01-11)
+
+
+### Bug Fixes
+
+* **iOS:** Fix iOS errors ([fd12845](https://github.com/hypery2k/nativescript-fabric/commit/fd12845)), closes [#13](https://github.com/hypery2k/nativescript-fabric/issues/13)
+
+
+
 <a name="0.1.2"></a>
 ## [0.1.2](https://github.com/hypery2k/nativescript-fabric/compare/v0.1.1...v0.1.2) (2017-01-11)
 
@@ -18,6 +28,7 @@
 * **build:** FIx tsc errors ([0157ad0](https://github.com/hypery2k/nativescript-fabric/commit/0157ad0))
 * **hooks:** Fix hook setup ([567b403](https://github.com/hypery2k/nativescript-fabric/commit/567b403))
 * **iOS:** Solve iOS init error ([#8](https://github.com/hypery2k/nativescript-fabric/issues/8)) ([6f79449](https://github.com/hypery2k/nativescript-fabric/commit/6f79449))
+* **prepare-script:** FIx prepare scritp ([d2949aa](https://github.com/hypery2k/nativescript-fabric/commit/d2949aa))
 * **prepare-script:** Fix promise error in prepare script ([7d78c2a](https://github.com/hypery2k/nativescript-fabric/commit/7d78c2a))
 
 
