@@ -3,7 +3,7 @@
 import * as application from 'application';
 import { IOS, getInstance } from "./fabric.common";
 import { FabricAppDelegate } from "./fabric.ios.appdelegate";
-declare var Crashlytics: any, Answers: any;
+declare var CrashlyticsKit: any, Answers: any;
 
 class CrashlyticsIOSPlugin implements IOS {
 
@@ -41,14 +41,14 @@ class CrashlyticsIOSPlugin implements IOS {
 
     logError(error: any, msg?: string): void {
         if (!!msg) {
-            Crashlytics.sharedInstance().setObjectValue(msg, "msg");
+            CrashlyticsKit.setObjectValue(msg, "msg");
         }
         if (!error.ios) {
             let nativeError: NSCoder = new NSCoder();
             nativeError.setValueForKey(error, "error")
-            Crashlytics.sharedInstance().recordError(nativeError);
+            CrashlyticsKit.recordError(nativeError);
         } else {
-            Crashlytics.sharedInstance().recordError(error);
+            CrashlyticsKit.recordError(error);
         }
     }
 }

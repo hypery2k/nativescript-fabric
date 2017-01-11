@@ -1,3 +1,13 @@
+<a name="0.1.2"></a>
+## [0.1.2](https://github.com/hypery2k/nativescript-fabric/compare/v0.1.1...v0.1.2) (2017-01-11)
+
+
+### Bug Fixes
+
+* **iOS:** Fix iOS errors ([a8a9ce6](https://github.com/hypery2k/nativescript-fabric/commit/a8a9ce6))
+
+
+
 <a name="0.1.1"></a>
 ## [0.1.1](https://github.com/hypery2k/nativescript-fabric/compare/v0.0.6...v0.1.1) (2017-01-10)
 
