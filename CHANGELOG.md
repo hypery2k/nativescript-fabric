@@ -1,3 +1,13 @@
+<a name="0.1.4"></a>
+## [0.1.4](https://github.com/hypery2k/nativescript-fabric/compare/v0.1.3...v0.1.4) (2017-01-12)
+
+
+### Bug Fixes
+
+* **type-error:** Fix type conversion error ([f06ebcc](https://github.com/hypery2k/nativescript-fabric/commit/f06ebcc))
+
+
+
 <a name="0.1.3"></a>
 ## [0.1.3](https://github.com/hypery2k/nativescript-fabric/compare/v0.1.2...v0.1.3) (2017-01-11)
 
