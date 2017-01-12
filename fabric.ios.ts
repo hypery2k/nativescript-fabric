@@ -41,14 +41,14 @@ class CrashlyticsIOSPlugin implements IOS {
 
     logError(error: any, msg?: string): void {
         if (!!msg) {
-            Crashlytics.sharedInstance().setObjectValueForKey(msg, "msg");
+            Crashlytics.sharedInstance().setObjectValueForKey('' + msg, "msg");
         }
         if (!error.ios) {
             let nativeError: NSCoder = new NSCoder();
-            nativeError.setValueForKey(error, "error");
+            nativeError.setValueForKey(JSON.stringify(error), "error");
             Crashlytics.sharedInstance().recordError(nativeError);
         } else {
-            Crashlytics.sharedInstance().recordError(error);
+            Crashlytics.sharedInstance().recordError(this.getErrorDetails(error));
         }
     }
 }

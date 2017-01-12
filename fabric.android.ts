@@ -25,7 +25,7 @@ class CrashlyticsAndroidPlugin implements Android {
         }
         return error;
     }
-    
+
     init(): void {
         if (application.android) {
             // configure logger
@@ -70,10 +70,10 @@ class CrashlyticsAndroidPlugin implements Android {
 
     logError(error: any, msg?: string): void {
         if (!!msg) {
-            com.crashlytics.android.Crashlytics.getInstance().core.log(msg);
+            com.crashlytics.android.Crashlytics.getInstance().core.log('' + msg);
         }
         if (!error.android) {
-            com.crashlytics.android.Crashlytics.getInstance().core.log(error);
+            com.crashlytics.android.Crashlytics.getInstance().core.log(JSON.stringify(error));
         } else {
             com.crashlytics.android.Crashlytics.getInstance().core.logException(this.getErrorDetails(error));
         }
