@@ -20,13 +20,6 @@ dependencies {
   }
 }
 
-Properties props = new Properties()
-try {
-  props.load(file('src/main/res/fabric.properties').newDataInputStream())
-} catch (Exception ex) {
-  throw new GradleException("Missing fabric.properties, check the fabric.properties.sample file.");
-}
-
 task createBuildID() {
   def sw = new StringWriter()
   def xml = new groovy.xml.MarkupBuilder(sw)
