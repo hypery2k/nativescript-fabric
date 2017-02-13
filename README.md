@@ -28,7 +28,12 @@ Plugin is still **WIP**
 $ tns plugin add nativescript-fabric
 ```
 
-Create a file fabric.json in the project root folder: 
+
+Go the [Crashlytics](https://fabric.io/kits/ios/crashlytics/install) and pick of the needed API-Key and API-Secret:
+
+![](etc/crashlytics_configuration.png)
+
+Create a file fabric.json in the project root folder and add the API-Key and API-Secret: 
 
 ```
 {
