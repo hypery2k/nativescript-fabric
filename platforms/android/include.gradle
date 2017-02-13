@@ -12,10 +12,10 @@ repositories {
 }
 
 dependencies {
-  compile('com.crashlytics.sdk.android:crashlytics:2.6.5@aar') {
+  compile('com.crashlytics.sdk.android:crashlytics:2.6.6@aar') {
     transitive = true;
   }
-  compile('com.crashlytics.sdk.android:answers:1.3.10@aar') {
+  compile('com.crashlytics.sdk.android:answers:1.3.11@aar') {
     transitive = true;
   }
 }
