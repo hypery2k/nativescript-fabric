@@ -29,7 +29,7 @@ $ tns plugin add nativescript-fabric
 ```
 
 
-Go the [Crashlytics](https://fabric.io/kits/ios/crashlytics/install) and pick of the needed API-Key and API-Secret:
+Go to [Crashlytics](https://fabric.io/kits/ios/crashlytics/install) and pick of the needed API-Key and API-Secret:
 
 ![](etc/crashlytics_configuration.png)
 
