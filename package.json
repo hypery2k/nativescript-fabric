@@ -1,66 +1,64 @@
 {
-  "name": "nativescript-fabric",
-  "version": "0.1.4",
-  "description": "A NativeScript Plugin for fabric.io",
-  "scripts": {
-    "clean": "npm i",
-    "build": "tsc",
-    "test": "npm run build",
-    "postinstall": "node postinstall.js",
-    "preuninstall": "node preuninstall.js",
-    "changelog": "conventional-changelog -p angular -i CHANGELOG.md -s -r 0",
-    "changelog:add": "git add CHANGELOG.md && git commit -m 'updated CHANGELOG.md'",
-    "release:pre": "npm run clean && npm run test",
-    "release:post": "npm run changelog && npm run changelog:add",
-    "release:major": "npm run release:pre && npm version major && npm run release:post && git push origin && git push origin --tags && npm publish",
-    "release:minor": "npm run release:pre && npm version minor && npm run release:post && git push origin && git push origin --tags && npm publish",
-    "release:patch": "npm run release:pre && npm version patch && npm run release:post && git push origin && git push origin --tags && npm publish"
-  },
-  "main": "fabric",
-  "typings": "index.d.ts",
-  "dependencies": {
-    "format": "0.2.2",
-    "fs-extra": "0.30.0",
-    "nativescript-hook": "^0.2.1",
-    "nativescript-theme-core": "^1.0.2",
-    "simple-plist": "0.2.1",
-    "xcode": "0.9.1",
-    "xmldom": "0.1.22"
-  },
-  "devDependencies": {
-    "@types/fs-extra": "0.0.37",
-    "conventional-changelog-cli": "1.2.0",
-    "nativescript-dev-typescript": "0.3.2",
-    "plist": "1.2.0",
-    "tns-core-modules": "2.3.0",
-    "tns-platform-declarations": "2.3.0",
-    "typescript": "2.1.5"
-  },
-  "nativescript": {
-    "platforms": {
-      "android": "2.3.0",
-      "ios": "2.3.0"
+    "name": "nativescript-fabric",
+    "version": "0.1.4",
+    "description": "A NativeScript Plugin for fabric.io",
+    "scripts": {
+        "clean": "npm i",
+        "build": "tsc",
+        "test": "npm run build",
+        "postinstall": "node postinstall.js",
+        "preuninstall": "node preuninstall.js",
+        "changelog": "conventional-changelog -p angular -i CHANGELOG.md -s -r 0",
+        "changelog:add": "git add CHANGELOG.md && git commit -m 'updated CHANGELOG.md'",
+        "release:pre": "npm run clean && npm run test",
+        "release:post": "npm run changelog && npm run changelog:add",
+        "release:major": "npm run release:pre && npm version major && npm run release:post && git push origin && git push origin --tags && npm publish",
+        "release:minor": "npm run release:pre && npm version minor && npm run release:post && git push origin && git push origin --tags && npm publish",
+        "release:patch": "npm run release:pre && npm version patch && npm run release:post && git push origin && git push origin --tags && npm publish"
     },
-    "hooks": [
-      {
-        "type": "after-prepare",
-        "script": "lib/after-prepare.js",
-        "inject": true
-      }
-    ]
-  },
-  "keywords": [
-    "fabric",
-    "crashlytics",
-    "Android"
-  ],
-  "author": "Martin Reinhardt <contact@martinreinhardt-online.de> (https://github.com/hypery2k)",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/hypery2k/nativescript-fabric.git"
-  },
-  "bugs": {
-    "url": "https://github.com/hypery2k/nativescript-fabric/issues"
-  },
-  "license": "MIT"
+    "main": "fabric",
+    "typings": "index.d.ts",
+    "dependencies": {
+        "format": "0.2.2",
+        "fs-extra": "0.30.0",
+        "nativescript-hook": "^0.2.1",
+        "nativescript-theme-core": "^1.0.2",
+        "simple-plist": "0.2.1",
+        "xcode": "0.9.1",
+        "xmldom": "0.1.22"
+    },
+    "devDependencies": {
+        "@types/fs-extra": "0.0.37",
+        "conventional-changelog-cli": "1.2.0",
+        "nativescript-dev-typescript": "0.3.7",
+        "plist": "1.2.0",
+        "tns-core-modules": "2.5.0",
+        "tns-platform-declarations": "2.5.0",
+        "typescript": "2.1.6"
+    },
+    "nativescript": {
+        "platforms": {
+            "android": "2.3.0",
+            "ios": "2.3.0"
+        },
+        "hooks": [{
+            "type": "after-prepare",
+            "script": "lib/after-prepare.js",
+            "inject": true
+        }]
+    },
+    "keywords": [
+        "fabric",
+        "crashlytics",
+        "Android"
+    ],
+    "author": "Martin Reinhardt <contact@martinreinhardt-online.de> (https://github.com/hypery2k)",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/hypery2k/nativescript-fabric.git"
+    },
+    "bugs": {
+        "url": "https://github.com/hypery2k/nativescript-fabric/issues"
+    },
+    "license": "MIT"
 }
