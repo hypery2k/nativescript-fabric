@@ -1,4 +1,4 @@
-/// <reference path="node_modules/tns-platform-declarations/tns-core-modules/ios/ios.d.ts" />
+/// <reference path="node_modules/tns-platform-declarations/ios/ios.d.ts" />
 
 import * as application from 'application';
 import { IOS, getInstance } from "./fabric.common";
