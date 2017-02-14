@@ -31,16 +31,26 @@ class CrashlyticsAndroidPlugin implements Android {
             // configure logger
             application.android.on('activityStarted', activityEventData => {
                 // Enable Fabric crash reporting
-                io.fabric.sdk.android.Fabric.with(activityEventData.activity, [
-                    // init Fabric with plugins
-                    new com.crashlytics.android.Crashlytics(),
-                    new com.crashlytics.android.answers.Answers()
-                ]);
+                io.fabric.sdk.android.Fabric.with(new io.fabric.sdk.android.Fabric.Builder(activityEventData.activity)
+                    .kits([
+                        // init Fabric with plugins
+                        new com.crashlytics.android.Crashlytics(),
+                        new com.crashlytics.android.answers.Answers()
+                    ])
+                    .debuggable(true)
+                    .build());
             });
             application.on('uncaughtError', args => {
                 com.crashlytics.android.Crashlytics.getInstance().core.logException(this.getErrorDetails(args));
             });
         }
+    }
+
+    logSignUp(method: string, success: boolean): void {
+        let event: any = new com.crashlytics.android.answers.SignUpEvent()
+            .putMethod(method)
+            .putSuccess(success);
+        com.crashlytics.android.answers.Answers.getInstance().logSignUp(event);
     }
 
     logLogin(method: string, success: boolean): void {
