@@ -7,6 +7,13 @@ export interface CrashlyticsPlugin {
     init: Function;
 
     /**
+     * Track signup events in your app.
+     * @param method of the signup
+     * @param success suggest if signup was true
+     */
+    logSignUp(method: string, success: boolean);
+
+    /**
      * Track login events in your app.
      * @param method of the login
      * @param success suggest if login was true
