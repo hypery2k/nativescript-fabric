@@ -21,6 +21,10 @@ class CrashlyticsIOSPlugin implements IOS {
         }
     }
 
+    logSignUp(method: string, success: boolean): void {
+        Answers.logSignUpWithMethod(method, success, null);
+    }
+
     logLogin(method: string, success: boolean): void {
         Answers.logLoginWithMethod(method, success, null);
     }

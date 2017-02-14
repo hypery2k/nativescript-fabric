@@ -1,6 +1,5 @@
 *.js.map
 *.js
-*.d.ts
 *.log
 .idea/
 hooks/
