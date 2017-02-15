@@ -77,6 +77,7 @@ Fabric.init();
 ```
 
 Afterwards you can use the instance methods for logging (general error logging is already added):
+* `Fabric.logSignUp(method: string, success: boolean);`
 * `Fabric.logLogin(method: string, success: boolean);`
 * `Fabric.logContentView(id: string, name: string, type: string)`
 * `Fabric.logCustomEvent(withName: string, customAttributes: Map<String, String>)`
