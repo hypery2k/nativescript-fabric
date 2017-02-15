@@ -30,7 +30,7 @@
   "devDependencies": {
     "@types/fs-extra": "0.0.37",
     "conventional-changelog-cli": "1.2.0",
-    "nativescript-dev-typescript": "0.3.2",
+    "nativescript-dev-typescript": "0.3.6",
     "plist": "1.2.0",
     "tns-core-modules": "2.3.0",
     "tns-platform-declarations": "2.3.0",
