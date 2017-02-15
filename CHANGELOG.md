@@ -1,3 +1,13 @@
+<a name="0.1.5"></a>
+## [0.1.5](https://github.com/hypery2k/nativescript-fabric/compare/v0.1.4...v0.1.5) (2017-01-30)
+
+
+### Bug Fixes
+
+* **prepare:** Fix for gradle error [#17](https://github.com/hypery2k/nativescript-fabric/issues/17) ([dff0481](https://github.com/hypery2k/nativescript-fabric/commit/dff0481))
+
+
+
 <a name="0.1.4"></a>
 ## [0.1.4](https://github.com/hypery2k/nativescript-fabric/compare/v0.1.3...v0.1.4) (2017-01-12)
 
