@@ -28,6 +28,12 @@ Plugin is still **WIP**
 $ tns plugin add nativescript-fabric
 ```
 
+Or if you want to use the development version (nightly build), which maybe not stable!:
+
+```
+$ tns plugin add nativescript-fabric@next
+```
+
 
 Go to [Crashlytics](https://fabric.io/kits/ios/crashlytics/install) and pick of the needed API-Key and API-Secret:
 
