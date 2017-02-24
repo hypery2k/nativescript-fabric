@@ -1,3 +1,13 @@
+<a name="0.2.0"></a>
+# [0.2.0](https://github.com/hypery2k/nativescript-fabric/compare/v0.1.5...v0.2.0) (2017-02-24)
+
+
+### Bug Fixes
+
+* **build-error:** Solve tsc errors ([69baf2c](https://github.com/hypery2k/nativescript-fabric/commit/69baf2c)), closes [#22](https://github.com/hypery2k/nativescript-fabric/issues/22)
+
+
+
 <a name="0.1.5"></a>
 ## [0.1.5](https://github.com/hypery2k/nativescript-fabric/compare/v0.1.4...v0.1.5) (2017-01-30)
 
