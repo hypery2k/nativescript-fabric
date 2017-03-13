@@ -5,15 +5,15 @@ properties properties: [
 
 node('nativescript') {
     def buildNumber = env.BUILD_NUMBER
-    def mvnHome = '/opt/dev/apache-maven-3.3.1'
+    def branchName = env.BRANCH_NAME
     def workspace = env.WORKSPACE
     def buildUrl = env.BUILD_URL
-    env.PATH = "${env.JAVA_HOME}/bin:${mvnHome}/bin:${env.PATH}"
 
     // PRINT ENVIRONMENT TO JOB
     echo "workspace directory is $workspace"
     echo "build URL is $buildUrl"
     echo "build Number is $buildNumber"
+    echo "branch name is $branchName"
     echo "PATH is $env.PATH"
 
     try {
@@ -22,9 +22,7 @@ node('nativescript') {
         }
 
         stage('Build') {
-            // sh "npm run clean"
-            sh "npm install"
-            sh "npm run build"
+            sh "npm run clean && npm run build"
         }
 
         stage('Test') {
@@ -40,7 +38,7 @@ node('nativescript') {
 
         stage('Publish NPM snapshot') {
             def currentVersion = sh(returnStdout: true, script: "npm version | grep \"{\" | tr -s ':'  | cut -d \"'\" -f 4").trim()
-            def newVersion = "${currentVersion}-${buildNumber}"
+            def newVersion = "${currentVersion}-${branchName}-${buildNumber}"
             sh "npm version ${newVersion} --no-git-tag-version && npm publish --tag next"
         }
 
