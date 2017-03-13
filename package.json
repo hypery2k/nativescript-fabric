@@ -3,7 +3,7 @@
   "version": "0.2.0",
   "description": "A NativeScript Plugin for fabric.io",
   "scripts": {
-    "clean": "npm i",
+    "clean": "rimraf hooks platforms && npm install",
     "build": "tsc",
     "test": "npm run build",
     "postinstall": "node postinstall.js",
@@ -22,16 +22,20 @@
     "format": "0.2.2",
     "fs-extra": "2.0.0",
     "nativescript-hook": "^0.2.1",
-    "nativescript-theme-core": "^1.0.2",
     "simple-plist": "0.2.1",
     "xcode": "0.9.1",
     "xmldom": "0.1.22"
   },
+  "peerDependencies": {
+    "tns-core-modules": "^2.3.1"
+  },
   "devDependencies": {
+    "@types/jasmine": "2.5.45",
     "@types/fs-extra": "0.0.37",
-    "conventional-changelog-cli": "1.2.0",
+    "conventional-changelog-cli": "1.3.1",
     "nativescript-dev-typescript": "0.3.7",
     "plist": "1.2.0",
+    "rimraf": "2.6.1",
     "tns-core-modules": "2.5.1",
     "tns-platform-declarations": "2.5.0",
     "typescript": "2.2.1"
