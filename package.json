@@ -28,7 +28,7 @@
     "xmldom": "0.1.22"
   },
   "devDependencies": {
-    "@types/fs-extra": "0.0.37",
+    "@types/fs-extra": "2.0.0",
     "conventional-changelog-cli": "1.2.0",
     "nativescript-dev-typescript": "0.3.7",
     "plist": "1.2.0",
