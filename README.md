@@ -1,5 +1,6 @@
 # NativeScript Fabric Plugin
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/hypery2k/nativescript-fabric.svg)](https://greenkeeper.io/)
 [![Build Status](https://travis-ci.org/hypery2k/nativescript-fabric.svg?branch=master)](https://travis-ci.org/hypery2k/nativescript-fabric)
 [![npm version](https://badge.fury.io/js/nativescript-fabric.svg)](http://badge.fury.io/js/nativescript-fabric)
 
