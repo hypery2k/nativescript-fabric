@@ -3,7 +3,7 @@
   "version": "0.2.0",
   "description": "A NativeScript Plugin for fabric.io",
   "scripts": {
-    "clean": "rimraf hooks platforms && npm install",
+    "clean": "rimraf node_modules && npm install",
     "build": "tsc",
     "test": "npm run build",
     "postinstall": "node postinstall.js",
