@@ -5,6 +5,8 @@ declare var io: any, com: any;
 
 class CrashlyticsAndroidPlugin implements Android {
 
+    private initDone = false;
+
     constructor() {
     }
 
@@ -38,7 +40,9 @@ class CrashlyticsAndroidPlugin implements Android {
                         new com.crashlytics.android.answers.Answers()
                     ])
                     .debuggable(true)
-                    .build());
+                    .build()
+                );
+                this.initDone = true;
             });
             application.on('uncaughtError', args => {
                 com.crashlytics.android.Crashlytics.getInstance().core.logException(this.getErrorDetails(args));
@@ -47,45 +51,55 @@ class CrashlyticsAndroidPlugin implements Android {
     }
 
     logSignUp(method: string, success: boolean): void {
-        let event: any = new com.crashlytics.android.answers.SignUpEvent()
-            .putMethod(method)
-            .putSuccess(success);
-        com.crashlytics.android.answers.Answers.getInstance().logSignUp(event);
+        if (this.initDone) {
+            let event: any = new com.crashlytics.android.answers.SignUpEvent()
+                .putMethod(method)
+                .putSuccess(success);
+            com.crashlytics.android.answers.Answers.getInstance().logSignUp(event);
+        }
     }
 
     logLogin(method: string, success: boolean): void {
-        let event: any = new com.crashlytics.android.answers.LoginEvent()
-            .putMethod(method)
-            .putSuccess(success);
-        com.crashlytics.android.answers.Answers.getInstance().logLogin(event);
+        if (this.initDone) {
+            let event: any = new com.crashlytics.android.answers.LoginEvent()
+                .putMethod(method)
+                .putSuccess(success);
+            com.crashlytics.android.answers.Answers.getInstance().logLogin(event);
+        }
     }
 
     logContentView(id: string, name: string, type: string): void {
-        let event: any = new com.crashlytics.android.answers.ContentViewEvent()
-            .putContentName(name)
-            .putContentType(type)
-            .putContentId(id);
-        com.crashlytics.android.answers.Answers.getInstance().logContentView(event);
+        if (this.initDone) {
+            let event: any = new com.crashlytics.android.answers.ContentViewEvent()
+                .putContentName(name)
+                .putContentType(type)
+                .putContentId(id);
+            com.crashlytics.android.answers.Answers.getInstance().logContentView(event);
+        }
     }
 
     logCustomEvent(withName: string, customAttributes: Map<String, String>): void {
-        let event: any = new com.crashlytics.android.answers.CustomEvent(withName);
-        if (!!customAttributes) {
-            customAttributes.forEach((value: string, key: string) => {
-                event.putCustomAttribute(key, value);
-            });
+        if (this.initDone) {
+            let event: any = new com.crashlytics.android.answers.CustomEvent(withName);
+            if (!!customAttributes) {
+                customAttributes.forEach((value: string, key: string) => {
+                    event.putCustomAttribute(key, value);
+                });
+            }
+            com.crashlytics.android.answers.Answers.getInstance().logCustom(event);
         }
-        com.crashlytics.android.answers.Answers.getInstance().logCustom(event);
     }
 
     logError(error: any, msg?: string): void {
-        if (!!msg) {
-            com.crashlytics.android.Crashlytics.getInstance().core.log('' + msg);
-        }
-        if (!error.android) {
-            com.crashlytics.android.Crashlytics.getInstance().core.log(JSON.stringify(error));
-        } else {
-            com.crashlytics.android.Crashlytics.getInstance().core.logException(this.getErrorDetails(error));
+        if (this.initDone) {
+            if (!!msg) {
+                com.crashlytics.android.Crashlytics.getInstance().core.log('' + msg);
+            }
+            if (!error.android) {
+                com.crashlytics.android.Crashlytics.getInstance().core.log(JSON.stringify(error));
+            } else {
+                com.crashlytics.android.Crashlytics.getInstance().core.logException(this.getErrorDetails(error));
+            }
         }
     }
 }
