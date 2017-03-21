@@ -37,7 +37,7 @@
     "plist": "1.2.0",
     "rimraf": "2.6.1",
     "tns-core-modules": "2.5.1",
-    "tns-platform-declarations": "2.5.0",
+    "tns-platform-declarations": "2.5.2",
     "typescript": "2.2.1"
   },
   "nativescript": {
