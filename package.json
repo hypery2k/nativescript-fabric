@@ -1,68 +1,70 @@
 {
-    "name": "nativescript-fabric",
-    "version": "0.2.1",
-    "description": "A NativeScript Plugin for fabric.io",
-    "scripts": {
-        "clean": " npm i rimraf && rimraf node_modules && npm install",
-        "build": "tsc",
-        "test": "npm run build",
-        "postinstall": "node postinstall.js",
-        "preuninstall": "node preuninstall.js",
-        "changelog": "conventional-changelog -p angular -i CHANGELOG.md -s -r 0",
-        "changelog:add": "git add CHANGELOG.md && git commit -m 'updated CHANGELOG.md'",
-        "release:pre": "npm run clean && npm run test",
-        "release:post": "npm run changelog && npm run changelog:add",
-        "release:major": "npm run release:pre && npm version major && npm run release:post && git push origin && git push origin --tags && npm publish",
-        "release:minor": "npm run release:pre && npm version minor && npm run release:post && git push origin && git push origin --tags && npm publish",
-        "release:patch": "npm run release:pre && npm version patch && npm run release:post && git push origin && git push origin --tags && npm publish"
+  "name": "nativescript-fabric",
+  "version": "0.2.2",
+  "description": "A NativeScript Plugin for fabric.io",
+  "scripts": {
+    "clean": " npm i rimraf && rimraf node_modules && npm install",
+    "build": "tsc",
+    "test": "npm run build",
+    "postinstall": "node postinstall.js",
+    "preuninstall": "node preuninstall.js",
+    "changelog": "conventional-changelog -p angular -i CHANGELOG.md -s -r 0",
+    "changelog:add": "git add CHANGELOG.md && git commit -m 'updated CHANGELOG.md'",
+    "release:pre": "npm run clean && npm run test",
+    "release:post": "npm run changelog && npm run changelog:add",
+    "release:major": "npm run release:pre && npm version major && npm run release:post && git push origin && git push origin --tags && npm publish",
+    "release:minor": "npm run release:pre && npm version minor && npm run release:post && git push origin && git push origin --tags && npm publish",
+    "release:patch": "npm run release:pre && npm version patch && npm run release:post && git push origin && git push origin --tags && npm publish"
+  },
+  "main": "fabric",
+  "typings": "index.d.ts",
+  "dependencies": {
+    "format": "0.2.2",
+    "fs-extra": "2.1.2",
+    "nativescript-hook": "^0.2.1",
+    "simple-plist": "0.2.1",
+    "xcode": "0.9.1",
+    "xmldom": "0.1.22"
+  },
+  "peerDependencies": {
+    "tns-core-modules": "^2.5.2"
+  },
+  "devDependencies": {
+    "@types/fs-extra": "2.0.0",
+    "@types/jasmine": "2.5.45",
+    "conventional-changelog-cli": "1.3.1",
+    "nativescript-dev-typescript": "0.3.7",
+    "plist": "1.2.0",
+    "rimraf": "2.6.1",
+    "tns-core-modules": "2.5.1",
+    "tns-platform-declarations": "2.5.2",
+    "typescript": "2.2.1"
+  },
+  "nativescript": {
+    "platforms": {
+      "android": "2.3.0",
+      "ios": "2.3.0"
     },
-    "main": "fabric",
-    "typings": "index.d.ts",
-    "dependencies": {
-        "format": "0.2.2",
-        "fs-extra": "2.1.2",
-        "nativescript-hook": "^0.2.1",
-        "simple-plist": "0.2.1",
-        "xcode": "0.9.1",
-        "xmldom": "0.1.22"
-    },
-    "peerDependencies": {
-        "tns-core-modules": "^2.5.2"
-    },
-    "devDependencies": {
-        "@types/fs-extra": "2.0.0",
-        "@types/jasmine": "2.5.45",
-        "conventional-changelog-cli": "1.3.1",
-        "nativescript-dev-typescript": "0.3.7",
-        "plist": "1.2.0",
-        "rimraf": "2.6.1",
-        "tns-core-modules": "2.5.1",
-        "tns-platform-declarations": "2.5.2",
-        "typescript": "2.2.1"
-    },
-    "nativescript": {
-        "platforms": {
-            "android": "2.3.0",
-            "ios": "2.3.0"
-        },
-        "hooks": [{
-            "type": "after-prepare",
-            "script": "lib/after-prepare.js",
-            "inject": true
-        }]
-    },
-    "keywords": [
-        "fabric",
-        "crashlytics",
-        "Android"
-    ],
-    "author": "Martin Reinhardt <contact@martinreinhardt-online.de> (https://github.com/hypery2k)",
-    "repository": {
-        "type": "git",
-        "url": "https://github.com/hypery2k/nativescript-fabric.git"
-    },
-    "bugs": {
-        "url": "https://github.com/hypery2k/nativescript-fabric/issues"
-    },
-    "license": "MIT"
+    "hooks": [
+      {
+        "type": "after-prepare",
+        "script": "lib/after-prepare.js",
+        "inject": true
+      }
+    ]
+  },
+  "keywords": [
+    "fabric",
+    "crashlytics",
+    "Android"
+  ],
+  "author": "Martin Reinhardt <contact@martinreinhardt-online.de> (https://github.com/hypery2k)",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/hypery2k/nativescript-fabric.git"
+  },
+  "bugs": {
+    "url": "https://github.com/hypery2k/nativescript-fabric/issues"
+  },
+  "license": "MIT"
 }
