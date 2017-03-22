@@ -29,76 +29,100 @@ class CrashlyticsAndroidPlugin implements Android {
     }
 
     init(): void {
-        if (application.android) {
-            // configure logger
-            application.android.on('activityStarted', activityEventData => {
-                // Enable Fabric crash reporting
-                io.fabric.sdk.android.Fabric.with(new io.fabric.sdk.android.Fabric.Builder(activityEventData.activity)
-                    .kits([
-                        // init Fabric with plugins
-                        new com.crashlytics.android.Crashlytics(),
-                        new com.crashlytics.android.answers.Answers()
-                    ])
-                    .debuggable(true)
-                    .build()
-                );
-                this.initDone = true;
-            });
-            application.on('uncaughtError', args => {
-                com.crashlytics.android.Crashlytics.getInstance().core.logException(this.getErrorDetails(args));
-            });
+        try {
+            if (application.android) {
+                // configure logger
+                application.android.on('activityStarted', activityEventData => {
+                    // Enable Fabric crash reporting
+                    io.fabric.sdk.android.Fabric.with(new io.fabric.sdk.android.Fabric.Builder(activityEventData.activity)
+                        .kits([
+                            // init Fabric with plugins
+                            new com.crashlytics.android.Crashlytics(),
+                            new com.crashlytics.android.answers.Answers()
+                        ])
+                        .debuggable(true)
+                        .build()
+                    );
+                    this.initDone = true;
+                });
+                application.on('uncaughtError', args => {
+                    com.crashlytics.android.Crashlytics.getInstance().core.logException(this.getErrorDetails(args));
+                });
+            }
+        } catch (e) {
+            console.error('Unknown error during init of Fabric', e);
         }
     }
 
     logSignUp(method: string, success: boolean): void {
         if (this.initDone) {
-            let event: any = new com.crashlytics.android.answers.SignUpEvent()
-                .putMethod(method)
-                .putSuccess(success);
-            com.crashlytics.android.answers.Answers.getInstance().logSignUp(event);
+            try {
+                let event: any = new com.crashlytics.android.answers.SignUpEvent()
+                    .putMethod(method)
+                    .putSuccess(success);
+                com.crashlytics.android.answers.Answers.getInstance().logSignUp(event);
+            } catch (e) {
+                console.error('Unknown logging signup in Fabric', e);
+            }
         }
     }
 
     logLogin(method: string, success: boolean): void {
         if (this.initDone) {
-            let event: any = new com.crashlytics.android.answers.LoginEvent()
-                .putMethod(method)
-                .putSuccess(success);
-            com.crashlytics.android.answers.Answers.getInstance().logLogin(event);
+            try {
+                let event: any = new com.crashlytics.android.answers.LoginEvent()
+                    .putMethod(method)
+                    .putSuccess(success);
+                com.crashlytics.android.answers.Answers.getInstance().logLogin(event);
+            } catch (e) {
+                console.error('Unknown logging login in Fabric', e);
+            }
         }
     }
 
     logContentView(id: string, name: string, type: string): void {
         if (this.initDone) {
-            let event: any = new com.crashlytics.android.answers.ContentViewEvent()
-                .putContentName(name)
-                .putContentType(type)
-                .putContentId(id);
-            com.crashlytics.android.answers.Answers.getInstance().logContentView(event);
+            try {
+                let event: any = new com.crashlytics.android.answers.ContentViewEvent()
+                    .putContentName(name)
+                    .putContentType(type)
+                    .putContentId(id);
+                com.crashlytics.android.answers.Answers.getInstance().logContentView(event);
+            } catch (e) {
+                console.error('Unknown logging content view in Fabric', e);
+            }
         }
     }
 
     logCustomEvent(withName: string, customAttributes: Map<String, String>): void {
         if (this.initDone) {
-            let event: any = new com.crashlytics.android.answers.CustomEvent(withName);
-            if (!!customAttributes) {
-                customAttributes.forEach((value: string, key: string) => {
-                    event.putCustomAttribute(key, value);
-                });
+            try {
+                let event: any = new com.crashlytics.android.answers.CustomEvent(withName);
+                if (!!customAttributes) {
+                    customAttributes.forEach((value: string, key: string) => {
+                        event.putCustomAttribute(key, value);
+                    });
+                }
+                com.crashlytics.android.answers.Answers.getInstance().logCustom(event);
+            } catch (e) {
+                console.error('Unknown logging custom event in Fabric', e);
             }
-            com.crashlytics.android.answers.Answers.getInstance().logCustom(event);
         }
     }
 
     logError(error: any, msg?: string): void {
         if (this.initDone) {
-            if (!!msg) {
-                com.crashlytics.android.Crashlytics.getInstance().core.log('' + msg);
-            }
-            if (!error.android) {
-                com.crashlytics.android.Crashlytics.getInstance().core.log(JSON.stringify(error));
-            } else {
-                com.crashlytics.android.Crashlytics.getInstance().core.logException(this.getErrorDetails(error));
+            try {
+                if (!!msg) {
+                    com.crashlytics.android.Crashlytics.getInstance().core.log('' + msg);
+                }
+                if (!error.android) {
+                    com.crashlytics.android.Crashlytics.getInstance().core.log(JSON.stringify(error));
+                } else {
+                    com.crashlytics.android.Crashlytics.getInstance().core.logException(this.getErrorDetails(error));
+                }
+            } catch (e) {
+                console.error('Unknown logging error in Fabric', e);
             }
         }
     }
