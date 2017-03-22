@@ -1,3 +1,21 @@
+<a name="0.2.2"></a>
+## [0.2.2](https://github.com/hypery2k/nativescript-fabric/compare/v0.2.1...v0.2.2) (2017-03-22)
+
+
+### Bug Fixes
+
+* **package:** downgrade [@types](https://github.com/types)/fs-extra to version 2.0.0 ([1d590b3](https://github.com/hypery2k/nativescript-fabric/commit/1d590b3))
+* **package:** update fs-extra to version 2.1.0 ([355930c](https://github.com/hypery2k/nativescript-fabric/commit/355930c))
+* **package:** update fs-extra to version 2.1.2 ([38dd128](https://github.com/hypery2k/nativescript-fabric/commit/38dd128))
+
+
+### Features
+
+* **error-handling:** Wrap error handling in try-catch block ([9cf0938](https://github.com/hypery2k/nativescript-fabric/commit/9cf0938))
+* **improve-error-handling:** Handle not intialized errors better ([66948df](https://github.com/hypery2k/nativescript-fabric/commit/66948df))
+
+
+
 <a name="0.2.1"></a>
 ## [0.2.1](https://github.com/hypery2k/nativescript-fabric/compare/v0.2.0...v0.2.1) (2017-03-14)
 
