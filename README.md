@@ -67,7 +67,29 @@ Add the API-Key to your AndroidManifest.xml:
 
 ### iOS
 
-No manuel setup needed
+Add the API Key in the Info.plist:
+```
+  <key>Fabric</key>
+  <dict>
+    <key>APIKey</key>
+    <string>xxx</string>
+    <key>Kits</key>
+    <array>
+      <dict>
+        <key>KitInfo</key>
+        <dict/>
+        <key>KitName</key>
+        <string>Answers</string>
+      </dict>
+      <dict>
+        <key>KitInfo</key>
+        <dict/>
+        <key>KitName</key>
+        <string>Crashlytics</string>
+      </dict>
+    </array>
+  </dict>
+```
 
 ## Additional information
 
