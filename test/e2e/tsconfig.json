@@ -1,0 +1,22 @@
+{
+    "compilerOptions": {
+        "target": "es5",
+        "module": "commonjs",
+        "declaration": false,
+        "removeComments": true,
+        "experimentalDecorators": true,
+        "noEmitHelpers": true,
+        "noEmitOnError": true,
+        "skipDefaultLibCheck": true,
+        "skipLibCheck": true,
+        "types": [
+            "jasmine"
+        ]
+    },
+    "exclude": [
+        "../../node_modules",
+        "node_modules",
+        "platforms",
+        "**/*.aot.ts"
+    ]
+}
