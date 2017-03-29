@@ -12,11 +12,15 @@ licenses:
   - 'android-sdk-preview-license-52d11cd2'
   - 'android-sdk-license-.+'
 
-script:
-  - export ANDROID_HOME=/usr/local/opt/android-sdk
-  - export PATH=$PATH:/usr/local/opt/android-sdk/tools:/usr/local/opt/android-sdk/platform-tools
-  - npm run build
-  - npm run test
+before_cache:
+    - rm -f $HOME/.gradle/caches/modules-2/modules-2.lock
+
+cache:
+    directories:
+        - .nvm
+        - $HOME/.gradle/caches/
+        - $HOME/.gradle/wrapper/
+
 before_install:
   - export ANDROID_HOME=/usr/local/opt/android-sdk
   - export PATH=$PATH:/usr/local/opt/android-sdk/tools:/usr/local/opt/android-sdk/platform-tools
@@ -28,7 +32,6 @@ before_install:
   - echo y | android update sdk --filter tools,platform-tools,android-23,build-tools-23.0.3,extra-android-m2repository,extra-google-m2repository,extra-android-support --all --no-ui;
   - npm install -g npm
   - npm install -g nativescript
-  - npm install
   # CocoaPods
   - gem install cocoapods --pre --no-rdoc --no-ri --no-document --quiet
   - gem install xcpretty --no-rdoc --no-ri --no-document --quiet
@@ -42,3 +45,14 @@ before_install:
   - xcodebuild -version
   - xcodebuild -showsdks
   - echo $ANDROID_HOME
+
+install:
+    - tns usage-reporting disable
+    - tns error-reporting disable
+    - npm install
+
+script:
+  - export ANDROID_HOME=/usr/local/opt/android-sdk
+  - export PATH=$PATH:/usr/local/opt/android-sdk/tools:/usr/local/opt/android-sdk/platform-tools
+  - npm run build
+  - npm run test
