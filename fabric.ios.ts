@@ -2,7 +2,7 @@
 
 import * as application from 'application';
 import { IOS, getInstance } from "./fabric.common";
-import { FabricAppDelegate } from "./fabric.ios.appdelegate";
+import { FabricAppDelegate } from "./fabric.appdelegate";
 declare var Crashlytics: any, Answers: any;
 
 class CrashlyticsIOSPlugin implements IOS {
