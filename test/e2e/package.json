@@ -7,6 +7,9 @@
     "id": "org.nativescript.sampleApp",
     "tns-ios": {
       "version": "2.5.0"
+    },
+    "tns-android": {
+      "version": "2.5.0"
     }
   },
   "dependencies": {
@@ -28,10 +31,14 @@
     "zone.js": "~0.7.2"
   },
   "devDependencies": {
+    "babel-traverse": "6.23.1",
+    "babel-types": "6.23.0",
+    "babylon": "6.16.1",
     "jasmine-core": "2.5.2",
     "karma": "^1.5.0",
     "karma-jasmine": "^1.1.0",
     "karma-nativescript-launcher": "^0.4.0",
+    "lazy": "1.0.11",
     "nativescript-dev-android-snapshot": "^0.*.*",
     "nativescript-dev-typescript": "~0.3.5",
     "typescript": "2.1.6"

@@ -2,7 +2,7 @@ import { inject, TestBed } from '@angular/core/testing';
 import * as appSettings from 'application-settings';
 import { AppModule } from '../app.module';
 
-describe('TaskDeliverParcelComponent', () => {
+describe('AppModule', () => {
 
   // provide our implementations or mocks to the dependency injector
   beforeEach(() => {
