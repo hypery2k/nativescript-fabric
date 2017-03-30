@@ -31,7 +31,7 @@ before_install:
   - brew install android-sdk;
   - echo y | android update sdk --filter tools,platform-tools,android-23,build-tools-23.0.3,extra-android-m2repository,extra-google-m2repository,extra-android-support --all --no-ui;
   - npm install -g npm
-  - npm install -g nativescript
+  - npm install -g nativescript@rc
   # CocoaPods
   - gem install cocoapods --pre --no-rdoc --no-ri --no-document --quiet
   - gem install xcpretty --no-rdoc --no-ri --no-document --quiet
@@ -56,3 +56,4 @@ script:
   - export PATH=$PATH:/usr/local/opt/android-sdk/tools:/usr/local/opt/android-sdk/platform-tools
   - npm run build
   - npm run test
+  - npm run e2e

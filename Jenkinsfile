@@ -26,14 +26,13 @@ node('nativescript') {
         }
 
         stage('Test') {
-            //sh "npm run test"
-            // junit 'test/android/build/reports/TEST-*.xml'
+            sh "npm run test"
+            //junit 'target/surefire-reports/unit/*/TEST-*.xml'
         }
 
         stage('E2E') {
-            //sh "npm run pre-e2e"
-           // sh "npm run e2e"
-           // junit 'tmp/TEST-*.xml'
+            sh "npm run e2e"
+            junit 'target/surefire-reports/NativeScript_/*/TEST-*.xml'
         }
 
         stage('Publish NPM snapshot') {

@@ -8,3 +8,4 @@ node_modules/
 test/e2e/node_modules/
 test/e2e/hooks/
 test/e2e/platforms/
+target/
