@@ -1,6 +1,7 @@
 /// <reference path="node_modules/tns-platform-declarations/ios/ios.d.ts" />
 
 import * as application from 'application';
+import { NativeScriptError } from 'application';
 import { IOS, getInstance } from "./fabric.common";
 import { FabricAppDelegate } from "./fabric.appdelegate";
 declare var Crashlytics: any, Answers: any;
@@ -77,9 +78,7 @@ class CrashlyticsIOSPlugin implements IOS {
                     Crashlytics.sharedInstance().setObjectValueForKey('' + msg, "msg");
                 }
                 if (!error.ios) {
-                    let nativeError: NSCoder = new NSCoder();
-                    nativeError.setValueForKey(JSON.stringify(error), "error");
-                    Crashlytics.sharedInstance().recordError(nativeError);
+                    Crashlytics.sharedInstance().recordError({ domain: msg ? msg : 'error', code: 0, userInfo: null });
                 } else {
                     Crashlytics.sharedInstance().recordError(this.getErrorDetails(error));
                 }
