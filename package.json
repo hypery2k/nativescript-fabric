@@ -8,7 +8,7 @@
         "postclean": "npm i",
         "build": "tsc",
         "test": "npm run build",
-        "pree2e": "cd test/e2e && npm i && npm i ../..",
+        "pree2e": "cd test/e2e && npm i && npm i ../.. && tns prepare ios && tns prepare android",
         "e2e": "npm run e2e:ios && npm run e2e:android",
         "e2e:ios": "cd test/e2e && tns test ios --emulator --justlaunch",
         "e2e:android": "cd test/e2e && tns test android --emulator --justlaunch",
