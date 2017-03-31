@@ -4,7 +4,7 @@
     "description": "A NativeScript Plugin for fabric.io",
     "scripts": {
         "preclean": "npm i rimraf",
-        "clean": "rimraf node_modules hooks platforms target",
+        "clean": "rimraf node_modules target",
         "postclean": "npm i",
         "build": "tsc",
         "test": "npm run build",
