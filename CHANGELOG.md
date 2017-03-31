@@ -1,3 +1,22 @@
+<a name="0.3.0"></a>
+# [0.3.0](https://github.com/hypery2k/nativescript-fabric/compare/v0.2.2...v0.3.0) (2017-03-31)
+
+
+### Bug Fixes
+
+* **iOS:** Fix init error ([a9e1014](https://github.com/hypery2k/nativescript-fabric/commit/a9e1014))
+* **iOS:** Fix Segmentation fault ([85f5881](https://github.com/hypery2k/nativescript-fabric/commit/85f5881)), closes [#46](https://github.com/hypery2k/nativescript-fabric/issues/46)
+* **ios-bug:** Fix platform agnostic bug (see [#32](https://github.com/hypery2k/nativescript-fabric/issues/32) and [#38](https://github.com/hypery2k/nativescript-fabric/issues/38)) ([0013de8](https://github.com/hypery2k/nativescript-fabric/commit/0013de8))
+* **ios-bug:** Fix platform agnostic bug (see [#32](https://github.com/hypery2k/nativescript-fabric/issues/32) and [#38](https://github.com/hypery2k/nativescript-fabric/issues/38)) ([729851e](https://github.com/hypery2k/nativescript-fabric/commit/729851e))
+
+
+### Features
+
+* **e2e-testing:** adding sample test app ([#12](https://github.com/hypery2k/nativescript-fabric/issues/12)) ([0e3199a](https://github.com/hypery2k/nativescript-fabric/commit/0e3199a))
+* **e2e-testing:** adding unit tests ([#12](https://github.com/hypery2k/nativescript-fabric/issues/12)) ([0de95d3](https://github.com/hypery2k/nativescript-fabric/commit/0de95d3))
+
+
+
 <a name="0.2.2"></a>
 ## [0.2.2](https://github.com/hypery2k/nativescript-fabric/compare/v0.2.1...v0.2.2) (2017-03-22)
 
