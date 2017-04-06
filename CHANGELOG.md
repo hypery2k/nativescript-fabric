@@ -1,3 +1,18 @@
+<a name="0.3.1"></a>
+## [0.3.1](https://github.com/hypery2k/nativescript-fabric/compare/v0.3.0...v0.3.1) (2017-04-06)
+
+
+### Bug Fixes
+
+* **android-error-handling:** solve android exception issues (see [#51](https://github.com/hypery2k/nativescript-fabric/issues/51)) ([8d1c823](https://github.com/hypery2k/nativescript-fabric/commit/8d1c823))
+
+
+### Features
+
+* **errorhandler-android:** Adding customer Fabric ErrorHandler ([d31128e](https://github.com/hypery2k/nativescript-fabric/commit/d31128e))
+
+
+
 <a name="0.3.0"></a>
 # [0.3.0](https://github.com/hypery2k/nativescript-fabric/compare/v0.2.2...v0.3.0) (2017-03-31)
 
