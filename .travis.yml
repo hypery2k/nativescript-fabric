@@ -1,29 +1,48 @@
 os: osx
-osx_image: xcode8.3
+osx_image: xcode8
 sudo: false
 language: objective-c
 
 env:
-  - NODE_VERSION="4"
-  - NODE_VERSION="5"
-  - NODE_VERSION="6"
+  - NODE_VERSION="4" NPM_VERSION="3" TNS_VERSION="rc"
+  - NODE_VERSION="5" NPM_VERSION="3" TNS_VERSION="rc"
+  - NODE_VERSION="6" NPM_VERSION="3" TNS_VERSION="rc"
+  - NODE_VERSION="7" NPM_VERSION="3" TNS_VERSION="rc"
 
-licenses:
-  - 'android-sdk-preview-license-52d11cd2'
-  - 'android-sdk-license-.+'
-
-
+script:
+  - export ANDROID_HOME=/usr/local/share/android-sdk
+  - export PATH=$PATH:$ANDROID_HOME/tools:$ANDROID_HOME/platform-tools
+  - npm run build
+  - npm run test
+  - npm run e2e
 before_install:
-  - brew update > /dev/null
-  - export ANDROID_HOME=/usr/local/opt/android-sdk
-  - export PATH=$PATH:/usr/local/opt/android-sdk/tools:/usr/local/opt/android-sdk/platform-tools
+  - export ANDROID_HOME=/usr/local/share/android-sdk
+  - export PATH=$PATH:$ANDROID_HOME/tools:$ANDROID_HOME/platform-tools
   - wget -qO- https://raw.githubusercontent.com/creationix/nvm/v0.31.0/install.sh | bash
   - source ~/.nvm/nvm.sh && nvm install $NODE_VERSION && nvm use $NODE_VERSION
   - PATH="`npm bin`:`npm bin -g`:$PATH"
-#  - brew install android-sdk
-#  - echo y | android update sdk --filter tools,platform-tools,android-23,build-tools-23.0.3,extra-android-m2repository,extra-google-m2repository,extra-android-support --all --no-ui;
-  - npm install -g npm
-  - npm install -g nativescript@rc
+  - brew update > /dev/null;
+  # Android setup
+  - brew install Caskroom/cask/android-sdk
+  - echo y | sdkmanager 'tools'
+  - echo y | sdkmanager 'platform-tools'
+  - echo y | sdkmanager 'build-tools;25.0.2'
+  - echo y | sdkmanager 'platforms;android-25'
+  - echo y | sdkmanager 'extras;android;m2repository'
+  - echo y | sdkmanager 'extras;google;google_play_services'
+  - echo y | sdkmanager 'extras;google;m2repository'
+  - echo y | sdkmanager 'system-images;android-22;default;armeabi-v7a' # for emulator
+  - echo y | sdkmanager 'platforms;android-22' # for emulator
+  - mkdir "$ANDROID_HOME/licenses" || true
+  - echo -e "\n8933bad161af4178b1185d1a37fbf41ea5269c55" > "$ANDROID_HOME/licenses/android-sdk-license"
+  - echo -e "\n84831b9409646a918e30573bab4c9c91346d8abd" > "$ANDROID_HOME/licenses/android-sdk-preview-license" 
+  # Create and start emulator as early as possible
+  - $ANDROID_HOME/tools/bin/avdmanager create avd --force --name test --package 'system-images;android-22;default;armeabi-v7a' --abi armeabi-v7a --device 'Nexus 4' --sdcard 128M
+  - $ANDROID_HOME/emulator/emulator -avd test -skin 768x1280 -no-audio -no-window &
+  # Setup NativeScript
+  - npm install -g npm@$NPM_VERSION
+  - npm install -g nativescript@$TNS_VERSION
+  - npm install
   # CocoaPods
   - gem install cocoapods --pre --no-rdoc --no-ri --no-document --quiet
   - gem install xcpretty --no-rdoc --no-ri --no-document --quiet
@@ -37,15 +56,4 @@ before_install:
   - xcodebuild -version
   - xcodebuild -showsdks
   - echo $ANDROID_HOME
-
-install:
-    - tns usage-reporting disable
-    - tns error-reporting disable
-    - npm install
-
-script:
-  - export ANDROID_HOME=/usr/local/opt/android-sdk
-  - export PATH=$PATH:/usr/local/opt/android-sdk/tools:/usr/local/opt/android-sdk/platform-tools
-  - npm run build
-  - npm run test
- # - npm run e2e
+  - npm run clean
