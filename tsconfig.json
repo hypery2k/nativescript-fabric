@@ -10,10 +10,19 @@
         "skipDefaultLibCheck": true,
         "skipLibCheck": true,
         "lib": [
-            "es2016"
+            "es2015",
+            "es2015.iterable",
+            "es6",
+            "dom"
+        ],
+        "types": [
+            "jasmine"
         ]
     },
-    "compileOnSave": false,
+    "files": [
+        "references.d.ts"
+    ],
+    "compileOnSave": true,
     "exclude": [
         "node_modules",
         "test",
