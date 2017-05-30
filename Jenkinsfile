@@ -1,9 +1,10 @@
 properties properties: [
         [$class: 'BuildDiscarderProperty', strategy: [$class: 'LogRotator', artifactDaysToKeepStr: '', artifactNumToKeepStr: '', daysToKeepStr: '30', numToKeepStr: '10']],
         [$class: 'GithubProjectProperty', displayName: '', projectUrlStr: 'https://github.com/hypery2k/nativescript-fabric'],
+        disableConcurrentBuilds()
 ]
 
-timeout(30) {
+timeout(60) {
   node('nativescript') {
       def buildNumber = env.BUILD_NUMBER
       def branchName = env.BRANCH_NAME
