@@ -36,11 +36,10 @@
     "xmldom": "0.1.22"
   },
   "peerDependencies": {
-    "@angular/core": ">=2.0.0 || >=4.0.0"
+    "tns-core-modules": ">=2.3.0 || >= 3.0.0"
   },
   "optionalPeerDependencies": {
-    "tns-core-modules": ">=2.3.0 || >= 3.0.0",
-    "tns-core-modules-widgets": ">=2.3.0 || >= 3.0.0"
+    "@angular/core": ">=2.0.0 || >=4.0.0"
   },
   "devDependencies": {
     "@angular/core": "4.1.3",
