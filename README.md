@@ -106,7 +106,7 @@ For more details see [fabric.io/kits/ios/crashlytics](https://fabric.io/kits/ios
 Init the plugin in your app (for angular apps use main.ts):
 
 ```
-import {Fabric} from 'nativescript-fabric';
+import { Fabric } from 'nativescript-fabric';
 Fabric.init();
 ```
 
@@ -116,3 +116,17 @@ Afterwards you can use the instance methods for logging (general error logging i
 * `Fabric.logContentView(id: string, name: string, type: string)`
 * `Fabric.logCustomEvent(withName: string, customAttributes: Map<String, String>)`
 * `Fabric.logError(error: any, msg?: string)`
+
+
+## Angular
+
+```
+import { FabricModule } from 'nativescript-fabric';
+
+NgModule({
+  ...
+  imports: [
+    FabricModule.forRoot()
+  ],
+
+```
