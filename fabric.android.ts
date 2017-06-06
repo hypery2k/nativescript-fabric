@@ -137,3 +137,6 @@ class CrashlyticsAndroidPlugin implements Android {
  * Create new singelton instance
  */
 export const Fabric: Android = getInstance(CrashlyticsAndroidPlugin);
+
+// export Angular Module
+export * from './app/app.module';

@@ -1,7 +1,6 @@
 .idea/
 .vscode/
 build.xcconfig
-app/
 demo/
 hooks/
 node_modules/

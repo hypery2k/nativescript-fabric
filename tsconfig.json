@@ -19,8 +19,9 @@
             "jasmine"
         ]
     },
-    "files": [
-        "references.d.ts"
+    "filesGlob": [
+        "./app/",
+        "./references.d.ts"
     ],
     "compileOnSave": true,
     "exclude": [

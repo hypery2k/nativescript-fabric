@@ -3,11 +3,4 @@ import { platformNativeScriptDynamic } from "nativescript-angular/platform";
 import { Fabric } from 'nativescript-fabric';
 import { AppModule } from "./app.module";
 
-try {
-  Fabric.init();
-  platformNativeScriptDynamic().bootstrapModule(AppModule);
-  Fabric.logCustomEvent('Init done', null);
-} catch (e) {
-  Fabric.logError(e);
-  throw e;
-}
+platformNativeScriptDynamic().bootstrapModule(AppModule);
