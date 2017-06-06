@@ -1,3 +1,22 @@
+<a name="1.0.0"></a>
+# [1.0.0](https://github.com/hypery2k/nativescript-fabric/compare/v0.3.1...v1.0.0) (2017-06-06)
+
+
+### Bug Fixes
+
+* **build:** Corrected build error ([c73484c](https://github.com/hypery2k/nativescript-fabric/commit/c73484c))
+* **package:** update xcode ([f19e2d5](https://github.com/hypery2k/nativescript-fabric/commit/f19e2d5))
+* **packages:** Resolve dependency issues for tns ([a60de08](https://github.com/hypery2k/nativescript-fabric/commit/a60de08))
+
+
+### Features
+
+* **angular-module:** Basic Angular module ([#63](https://github.com/hypery2k/nativescript-fabric/issues/63)) ([87d6dc1](https://github.com/hypery2k/nativescript-fabric/commit/87d6dc1))
+* **TNS-3:** Adding NativeScript 3 support ([7005401](https://github.com/hypery2k/nativescript-fabric/commit/7005401))
+* **TNS-3:** Update test app to NativeScrtip 3 ([62348d0](https://github.com/hypery2k/nativescript-fabric/commit/62348d0))
+
+
+
 <a name="0.3.1"></a>
 ## [0.3.1](https://github.com/hypery2k/nativescript-fabric/compare/v0.3.0...v0.3.1) (2017-04-06)
 
