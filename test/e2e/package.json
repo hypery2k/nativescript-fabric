@@ -3,6 +3,13 @@
   "license": "SEE LICENSE IN <your-license-filename>",
   "readme": "NativeScript Application",
   "repository": "<fill-your-repository-here>",
+  "scripts": {
+    "preclean": "npm i rimraf",
+    "clean": "rimraf node_modules lib hooks platforms target app/*.css app/**/*.js app/**/*.js.map",
+    "postclean": "npm install && npm i ../..",
+    "ngc": "ngc -p tsconfig.aot.json",
+    "tsc": "tsc -p tsconfig.json"
+  },
   "nativescript": {
     "id": "org.nativescript.sampleApp",
     "tns-ios": {
