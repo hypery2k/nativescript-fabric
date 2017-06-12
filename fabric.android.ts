@@ -138,5 +138,3 @@ class CrashlyticsAndroidPlugin implements Android {
  */
 export const Fabric: Android = getInstance(CrashlyticsAndroidPlugin);
 
-// export Angular Module
-export * from './app/app.module';

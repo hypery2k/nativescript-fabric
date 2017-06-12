@@ -121,7 +121,7 @@ Afterwards you can use the instance methods for logging (general error logging i
 ## Angular
 
 ```
-import { FabricModule } from 'nativescript-fabric';
+import { FabricModule } from 'nativescript-fabric/angular';
 
 NgModule({
   ...

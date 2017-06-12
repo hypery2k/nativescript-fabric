@@ -93,6 +93,3 @@ class CrashlyticsIOSPlugin implements IOS {
  * Create new singelton instance
  */
 export const Fabric: IOS = getInstance(CrashlyticsIOSPlugin);
-
-// export Angular Module
-export * from './app/app.module';
