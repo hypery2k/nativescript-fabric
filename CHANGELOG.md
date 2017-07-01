@@ -1,3 +1,18 @@
+<a name="1.0.1"></a>
+## [1.0.1](https://github.com/hypery2k/nativescript-fabric/compare/v1.0.0...v1.0.1) (2017-07-01)
+
+
+### Bug Fixes
+
+* **PNA-issue:** Move angular to seperate sub-entry, see [#66](https://github.com/hypery2k/nativescript-fabric/issues/66) ([36b0671](https://github.com/hypery2k/nativescript-fabric/commit/36b0671))
+
+
+### BREAKING CHANGES
+
+* **PNA-issue:** Import changed for angular-module changed from `import { FabricModule } from 'nativescript-fabric';` to `import { FabricModule } from 'nativescript-fabric/angular';`
+
+
+
 <a name="1.0.0"></a>
 # [1.0.0](https://github.com/hypery2k/nativescript-fabric/compare/v0.3.1...v1.0.0) (2017-06-06)
 
