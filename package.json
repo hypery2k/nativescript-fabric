@@ -1,6 +1,6 @@
 {
   "name": "nativescript-fabric",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "A NativeScript Plugin for fabric.io",
   "scripts": {
     "preclean": "npm i rimraf",
