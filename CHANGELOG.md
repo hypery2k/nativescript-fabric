@@ -1,3 +1,13 @@
+<a name="1.0.2"></a>
+## [1.0.2](https://github.com/hypery2k/nativescript-fabric/compare/v1.0.1...v1.0.2) (2017-07-04)
+
+
+### Bug Fixes
+
+* **AoT-Error:** Solve Angular AoT error ([929a5e6](https://github.com/hypery2k/nativescript-fabric/commit/929a5e6))
+
+
+
 <a name="1.0.1"></a>
 ## [1.0.1](https://github.com/hypery2k/nativescript-fabric/compare/v1.0.0...v1.0.1) (2017-07-01)
 
