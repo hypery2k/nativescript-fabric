@@ -4,6 +4,8 @@ build.xcconfig
 demo/
 hooks/
 node_modules/
+# TODO
+platforms/android/libraryproject
 test/
 *.gif
 *.jpg
