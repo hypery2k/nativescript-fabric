@@ -1,3 +1,13 @@
+<a name="1.0.3"></a>
+## [1.0.3](https://github.com/hypery2k/nativescript-fabric/compare/v1.0.2...v1.0.3) (2017-07-04)
+
+
+### Bug Fixes
+
+* **build-error:** Resolve TNS 3 build error ([623c787](https://github.com/hypery2k/nativescript-fabric/commit/623c787)), closes [#68](https://github.com/hypery2k/nativescript-fabric/issues/68)
+
+
+
 <a name="1.0.2"></a>
 ## [1.0.2](https://github.com/hypery2k/nativescript-fabric/compare/v1.0.1...v1.0.2) (2017-07-04)
 
