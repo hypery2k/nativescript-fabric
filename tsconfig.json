@@ -1,19 +1,20 @@
 {
     "compilerOptions": {
-        "target": "es5",
+        "noImplicitAny": false,
         "module": "commonjs",
-        "declaration": true,
-        "removeComments": true,
+        "target": "es5",
+        "moduleResolution": "node",
+        "emitDecoratorMetadata": true,
         "experimentalDecorators": true,
+        "declaration": true,
         "noEmitHelpers": true,
         "noEmitOnError": true,
-        "skipDefaultLibCheck": true,
-        "skipLibCheck": true,
+        "importHelpers": false,
+        "types": [],
         "lib": [
+            "dom",
             "es2015",
-            "es2015.iterable",
-            "es6",
-            "dom"
+            "es2015.iterable"
         ],
         "types": [
             "jasmine"
@@ -23,10 +24,13 @@
         "./app/",
         "./references.d.ts"
     ],
-    "compileOnSave": true,
     "exclude": [
         "node_modules",
         "test",
         "platforms"
-    ]
+    ],
+    "angularCompilerOptions": {
+        "strictMetadataEmit": true,
+        "skipTemplateCodegen": true
+    }
 }

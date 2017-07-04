@@ -1,4 +1,6 @@
 *.d.ts
+**/*.metadata.json
+**/*.ngsummary.json
 *.js.map
 *.js
 *.log

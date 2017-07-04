@@ -6,7 +6,8 @@
     "preclean": "npm i rimraf",
     "clean": "rimraf node_modules target",
     "postclean": "npm i",
-    "build": "tsc",
+    "build": "ngc",
+    "tsc": "tsc",
     "test": "npm run build",
     "pree2e": "cd test/e2e && npm run clean && npm run tsc && tns prepare ios && tns prepare android",
     "e2e": "npm run e2e:ios && npm run e2e:android",
@@ -32,6 +33,7 @@
     "fs-extra": "3.0.0",
     "nativescript-hook": "0.2.1",
     "simple-plist": "0.2.1",
+    "typescript": "2.1.6",
     "xcode": "0.9.3",
     "xmldom": "0.1.22"
   },
@@ -42,6 +44,8 @@
     "@angular/core": ">=2.0.0 || >=4.0.0"
   },
   "devDependencies": {
+    "@angular/compiler": "4.2.5",
+    "@angular/compiler-cli": "4.2.5",
     "@angular/core": "4.2.5",
     "@types/fs-extra": "3.0.2",
     "@types/jasmine": "2.5.53",
