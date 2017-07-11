@@ -1,3 +1,13 @@
+<a name="1.0.4"></a>
+## [1.0.4](https://github.com/hypery2k/nativescript-fabric/compare/v1.0.3...v1.0.4) (2017-07-11)
+
+
+### Bug Fixes
+
+* **circular-error:** Resolve JSON.stringify circular error ([c13be0a](https://github.com/hypery2k/nativescript-fabric/commit/c13be0a))
+
+
+
 <a name="1.0.3"></a>
 ## [1.0.3](https://github.com/hypery2k/nativescript-fabric/compare/v1.0.2...v1.0.3) (2017-07-04)
 
