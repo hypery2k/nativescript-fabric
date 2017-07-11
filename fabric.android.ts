@@ -50,7 +50,11 @@ class CrashlyticsAndroidPlugin implements Android {
         });
         application.on('uncaughtError', args => {
           if (!args.android) {
-            com.crashlytics.android.Crashlytics.getInstance().core.log(android.util.Log.ERROR, 'ERROR', JSON.stringify(args));
+            if (args.toString) {
+              com.crashlytics.android.Crashlytics.getInstance().core.log(android.util.Log.ERROR, 'ERROR', args.toString());
+            } else {
+              com.crashlytics.android.Crashlytics.getInstance().core.log(android.util.Log.ERROR, 'ERROR', JSON.stringify(args));
+            }
           } else {
             com.crashlytics.android.Crashlytics.getInstance().core.logException(this.getErrorDetails(args));
           }
@@ -121,8 +125,14 @@ class CrashlyticsAndroidPlugin implements Android {
     if (this.initDone) {
       try {
         if (!error.android) {
-          com.crashlytics.android.Crashlytics.getInstance().core.log(android.util.Log.ERROR, 'ERROR', msg);
-          com.crashlytics.android.Crashlytics.getInstance().core.log(JSON.stringify(error));
+          if (!!msg) {
+            com.crashlytics.android.Crashlytics.getInstance().core.log(android.util.Log.ERROR, 'ERROR', msg);
+          }
+          if (error.toString) {
+            com.crashlytics.android.Crashlytics.getInstance().core.log(android.util.Log.ERROR, 'ERROR', error.toString());
+          } else {
+            com.crashlytics.android.Crashlytics.getInstance().core.log(JSON.stringify(error));
+          }
         } else {
           com.crashlytics.android.Crashlytics.getInstance().core.logException(this.getErrorDetails(error));
         }
