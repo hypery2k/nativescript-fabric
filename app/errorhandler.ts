@@ -43,7 +43,7 @@ import { Fabric } from 'nativescript-fabric';
  */
 export class FabricErrorHandler extends ErrorHandler {
   constructor() {
-    super(false);
+    super(true);
   }
   /**
    * @internal
@@ -53,5 +53,7 @@ export class FabricErrorHandler extends ErrorHandler {
     try {
       Fabric.logError(err);
     } catch (e) { }
+    // IMPORTANT: Rethrow the error otherwise it gets swallowed
+    throw err;
   }
 }
