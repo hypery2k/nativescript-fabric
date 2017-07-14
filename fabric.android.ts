@@ -1,5 +1,6 @@
 import * as application from 'application';
 import { Android, getInstance } from "./fabric.common";
+import { stringify } from "./utils/helper";
 
 declare var io: any, com: any, android: any;
 
@@ -8,12 +9,6 @@ class CrashlyticsAndroidPlugin implements Android {
   private initDone = false;
 
   constructor() {
-    application.on(application.uncaughtErrorEvent, function (args) {
-      if (application.android) {
-        // For Android applications, args.android is an NativeScriptError.
-        this.logError(args);
-      }
-    });
   }
 
 
@@ -49,18 +44,20 @@ class CrashlyticsAndroidPlugin implements Android {
               new com.crashlytics.android.Crashlytics(),
               new com.crashlytics.android.answers.Answers()
             ])
-            .debuggable(true)
+            .debuggable(false)
             .build()
           );
           this.initDone = true;
         });
         application.on('uncaughtError', args => {
           if (!args.android) {
-            if (args.toString) {
-              com.crashlytics.android.Crashlytics.getInstance().core.log(android.util.Log.ERROR, 'ERROR', args.toString());
-            } else {
-              com.crashlytics.android.Crashlytics.getInstance().core.log(android.util.Log.ERROR, 'ERROR', JSON.stringify(args));
+            let msg = args.toString();
+            try {
+              msg = stringify(args);
+            } catch (ignored) {
+
             }
+            com.crashlytics.android.Crashlytics.getInstance().core.log(android.util.Log.ERROR, 'ERROR', msg);
           } else {
             com.crashlytics.android.Crashlytics.getInstance().core.logException(this.getErrorDetails(args));
           }

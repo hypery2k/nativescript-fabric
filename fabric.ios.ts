@@ -11,12 +11,6 @@ class CrashlyticsIOSPlugin implements IOS {
   private initDone = false;
 
   constructor() {
-    application.on(application.uncaughtErrorEvent, (args) => {
-      if (application.ios) {
-        // For iOS applications, args.ios is NativeScriptError.
-        this.logError(args);
-      }
-    });
   }
 
   getErrorDetails(args: any): any {
@@ -29,6 +23,12 @@ class CrashlyticsIOSPlugin implements IOS {
       application.ios.delegate = FabricAppDelegate;
       this.initDone = true;
     }
+    application.on('uncaughtError', args => {
+      if (application.ios) {
+        // For iOS applications, args.ios is NativeScriptError.
+        this.logError(args);
+      }
+    });
   }
 
   logSignUp(method: string, success: boolean): void {
