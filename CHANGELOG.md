@@ -1,3 +1,21 @@
+<a name="1.0.5"></a>
+## [1.0.5](https://github.com/hypery2k/nativescript-fabric/compare/v1.0.4...v1.0.5) (2017-07-14)
+
+
+### Bug Fixes
+
+* **angular-errorhandling:** Improve Angular Error Handling ([43aa006](https://github.com/hypery2k/nativescript-fabric/commit/43aa006))
+* **JSON-error:** Solve TypeError: cyclic object value ([148181d](https://github.com/hypery2k/nativescript-fabric/commit/148181d))
+* **package:** Update to latest Crashlytics libs ([02389b0](https://github.com/hypery2k/nativescript-fabric/commit/02389b0))
+
+
+### Features
+
+* **error-handling:** Improved application error handling, listen to application error events ([b698ff9](https://github.com/hypery2k/nativescript-fabric/commit/b698ff9))
+* **update:** Always use latest versions on iOS ([daf9897](https://github.com/hypery2k/nativescript-fabric/commit/daf9897))
+
+
+
 <a name="1.0.4"></a>
 ## [1.0.4](https://github.com/hypery2k/nativescript-fabric/compare/v1.0.3...v1.0.4) (2017-07-11)
 
