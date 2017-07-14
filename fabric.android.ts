@@ -8,6 +8,12 @@ class CrashlyticsAndroidPlugin implements Android {
   private initDone = false;
 
   constructor() {
+    application.on(application.uncaughtErrorEvent, function (args) {
+      if (application.android) {
+        // For Android applications, args.android is an NativeScriptError.
+        this.logError(args);
+      }
+    });
   }
 
 

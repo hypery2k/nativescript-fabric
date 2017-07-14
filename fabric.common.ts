@@ -1,4 +1,4 @@
-var INSTANCE: CrashlyticsPlugin;
+let INSTANCE: CrashlyticsPlugin;
 
 export interface CrashlyticsPlugin {
     /**
