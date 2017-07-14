@@ -30,7 +30,7 @@
   "typings": "index.d.ts",
   "dependencies": {
     "format": "0.2.2",
-    "fs-extra": "3.0.0",
+    "fs-extra": "4.0.0",
     "nativescript-hook": "0.2.1",
     "simple-plist": "0.2.1",
     "typescript": "2.1.6",
