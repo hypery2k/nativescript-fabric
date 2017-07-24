@@ -16,24 +16,3 @@ dependencies {
     transitive = true;
   }
 }
-
-
-task createBuildID() {
-  def sw = new StringWriter()
-  def xml = new groovy.xml.MarkupBuilder(sw)
-  xml.mkp.xmlDeclaration(version: "1.0", encoding: "utf-8", standalone: "no")
-  xml.resources() {
-    string(name: "com.crashlytics.android.build_id", java.util.UUID.randomUUID().toString())
-  }
-  try {
-    def stringsFile = new File("src/main/res/values/com_crashlytics_build_id.xml")
-    stringsFile.write(sw.toString())
-  } catch (Exception e) {
-    def stringsFile = new File("platforms/android/src/main/res/values/com_crashlytics_build_id.xml")
-    stringsFile.write(sw.toString())
-  }
-}
-
-project.afterEvaluate {
-  preBuild.dependsOn createBuildID
-}
