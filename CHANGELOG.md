@@ -1,3 +1,13 @@
+<a name="1.0.6"></a>
+## [1.0.6](https://github.com/hypery2k/nativescript-fabric/compare/v1.0.5...v1.0.6) (2017-07-27)
+
+
+### Bug Fixes
+
+* **fastlane-error:** Restructure gradle build ([2b48f6c](https://github.com/hypery2k/nativescript-fabric/commit/2b48f6c))
+
+
+
 <a name="1.0.5"></a>
 ## [1.0.5](https://github.com/hypery2k/nativescript-fabric/compare/v1.0.4...v1.0.5) (2017-07-14)
 
