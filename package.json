@@ -41,7 +41,7 @@
     "tns-core-modules": ">=2.3.0 || >= 3.0.0 || >=3.1.0"
   },
   "optionalPeerDependencies": {
-    "@angular/core": ">=2.0.0 || >=4.0.0 || >=4.1.0 || >=4.2.0 || >=4.3.0",
+    "@angular/core": ">=2.0.0 || >=4.0.0 || >=4.1.0 || >=4.2.0 || >=4.3.0"
   },
   "devDependencies": {
     "@angular/compiler": "4.2.5",
