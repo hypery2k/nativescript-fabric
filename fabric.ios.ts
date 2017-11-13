@@ -34,7 +34,7 @@ class CrashlyticsIOSPlugin implements IOS {
   logSignUp(method: string, success: boolean): void {
     if (this.initDone) {
       try {
-        Answers.logSignUpWithMethod(method, success, null);
+        Answers.logSignUpWithMethodSuccessCustomAttributes(method, success, null);
       } catch (e) {
         console.error('Unknown logging signup in Fabric', e);
       }
@@ -44,7 +44,7 @@ class CrashlyticsIOSPlugin implements IOS {
   logLogin(method: string, success: boolean): void {
     if (this.initDone) {
       try {
-        Answers.logLoginWithMethod(method, success, null);
+        Answers.logLoginWithMethodSuccessCustomAttributes(method, success, null);
       } catch (e) {
         console.error('Unknown logging login in Fabric', e);
       }
@@ -54,7 +54,7 @@ class CrashlyticsIOSPlugin implements IOS {
   logContentView(id: string, name: string, type: string): void {
     if (this.initDone) {
       try {
-        Answers.logContentViewWithName(name, type, id, null);
+        Answers.logContentViewWithNameContentTypeContentIdCustomAttributes(name, type, id, null);
       } catch (e) {
         console.error('Unknown logging content view in Fabric', e);
       }
@@ -70,7 +70,7 @@ class CrashlyticsIOSPlugin implements IOS {
             attributes[key] = value;
           });
         }
-        Answers.logCustomEventWithName(withName, attributes);
+        Answers.logCustomEventWithNameCustomAttributes(withName, attributes);
       } catch (e) {
         console.error('Unknown logging custom event in Fabric', e);
       }
