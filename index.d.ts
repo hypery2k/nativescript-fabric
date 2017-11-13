@@ -6,6 +6,3 @@ export * from './fabric.android';
 
 // Export any shared classes, constants, etc.
 export * from './fabric.common';
-
-// export Angular Module
-export * from './app/app.module';
