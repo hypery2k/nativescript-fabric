@@ -45,7 +45,7 @@
   },
   "devDependencies": {
     "@angular/compiler": "4.3.3",
-    "@angular/compiler-cli": "4.3.3",
+    "@angular/compiler-cli": "4.3.5",
     "@angular/core": "4.3.3",
     "@types/fs-extra": "4.0.0",
     "@types/jasmine": "2.5.53",
