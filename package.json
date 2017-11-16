@@ -33,7 +33,7 @@
     "fs-extra": "4.0.1",
     "nativescript-hook": "0.2.1",
     "simple-plist": "0.2.1",
-    "typescript": "2.4.2",
+    "typescript": "2.5.2",
     "xcode": "0.9.3",
     "xmldom": "0.1.27"
   },
