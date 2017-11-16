@@ -56,7 +56,7 @@
     "tns-core-modules": "3.1.0",
     "tns-platform-declarations": "3.1.0",
     "typescript": "2.4.2",
-    "zone.js": "0.8.16"
+    "zone.js": "0.8.17"
   },
   "nativescript": {
     "platforms": {
