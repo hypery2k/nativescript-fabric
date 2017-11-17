@@ -33,7 +33,8 @@ describe("simple", function() {
             .waitForElementByAccessibilityId('tapButton', WAIT_TIMEOUT)
             .should.eventually.exist
             .tap()
-            .elementByAccessibilityId("appURL")
-            .should.eventually.exist;
+            /*  .waitForElementByAccessibilityId('appURL', WAIT_TIMEOUT)
+              .elementByAccessibilityId("appURL")
+              .should.eventually.exist; */
     });
 });
