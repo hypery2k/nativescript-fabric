@@ -3,6 +3,7 @@
 [![Greenkeeper badge](https://badges.greenkeeper.io/hypery2k/nativescript-fabric.svg)](https://greenkeeper.io/)
 [![Build Status](https://travis-ci.org/hypery2k/nativescript-fabric.svg?branch=master)](https://travis-ci.org/hypery2k/nativescript-fabric)
 [![npm version](https://badge.fury.io/js/nativescript-fabric.svg)](http://badge.fury.io/js/nativescript-fabric)
+[![Maintainability](https://api.codeclimate.com/v1/badges/85a5fd560b331cd8922e/maintainability)](https://codeclimate.com/github/hypery2k/nativescript-fabric/maintainability)
 
 Plugin is still **WIP**
 
