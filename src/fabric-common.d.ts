@@ -1,4 +1,4 @@
-import { CrashlyticsPlugin } from '.';
+import { CrashlyticsPlugin } from './fabric';
 export interface Android extends CrashlyticsPlugin {
 }
 export interface IOS extends CrashlyticsPlugin {

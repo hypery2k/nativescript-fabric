@@ -76,6 +76,9 @@ src/**/*.ngfactory.ts
 src/**/*.metadata.json
 target/
 
+# publish, helper
+publish/node_modules/
+
 # demo apps
 demo/node_modules/
 demo/hooks

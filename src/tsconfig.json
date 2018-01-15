@@ -9,7 +9,7 @@
         "experimentalDecorators": true,
         "declaration": true,
         "sourceMap": false,
-        "noEmitHelpers": false,
+        "noEmitHelpers": true,
         "noEmitOnError": true,
         "skipLibCheck": true,
         "lib": [

@@ -1,4 +1,4 @@
-import { CrashlyticsPlugin } from '.';
+import { CrashlyticsPlugin } from './fabric';
 
 let INSTANCE: CrashlyticsPlugin;
 

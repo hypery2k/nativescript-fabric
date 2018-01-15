@@ -7,7 +7,11 @@ Jenkinsfile
 *.log
 *.ts
 !*.d.ts
+etc/
+hooks/
 target/
+lib/*.es6.js
 test/
 tsconfig.json
 references.d.ts
+platforms/android/libraryproject/

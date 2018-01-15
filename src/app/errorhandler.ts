@@ -44,7 +44,7 @@ import { Fabric } from '..';
 export class FabricErrorHandler extends ErrorHandler {
 
   constructor() {
-    super(true);
+    super();
   }
   /**
    * @internal

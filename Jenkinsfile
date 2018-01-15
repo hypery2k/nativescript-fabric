@@ -27,18 +27,37 @@ timeout(60) {
 
       dir('src') {
         stage('Build') {
-          sh "npm run clean && npm run build"
+          parallel plugin:{
+            sh "npm run clean && npm run build"
+          }, demo: {
+            sh "cd ../demo && npm i"
+          }, demoAngular: {
+            sh "cd ../demo-angular && npm i"
+          },
+          failFast: true
+
         }
 
         stage('Test') {
-          sh "npm run test"
-          // junit 'target/junit-report/junitresults-*.xml'
+          parallel unit:{
+            sh "npm run test"
+          }, iOS: {
+            sh "cd ../demo && npm run ci.ios.build" // && tns test ios --justlaunch --emulator"
+          }, Android: {
+            sh "cd ../demo && npm run ci.android.build" // && tns test android --justlaunch --emulator"
+          },
+          failFast: true
+          // junit 'target/junit-report/TEST-*.xml'
         }
       }
 
       stage('End2End Test') {
-        sh "cd demo && npm run build.plugin && npm i && npm run build-ios-bundle && npm run build-android-bundle"
-        sh "cd demo-angular && npm run build.plugin && npm i && npm run build-ios-bundle && npm run build-android-bundle"
+        parallel demo: {
+          sh "cd demo && npm run build.plugin && npm i && npm run build-ios-bundle && npm run build-android-bundle"
+        }, demoAngular: {
+          sh "cd demo-angular && npm run build.plugin && npm i && npm run build-ios-bundle && npm run build-android-bundle"
+        },
+        failFast: true
       }
 
       stage('Publish NPM snapshot') {

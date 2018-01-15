@@ -1,55 +1,57 @@
 {
-  "description": "NativeScript Application",
-  "license": "SEE LICENSE IN <your-license-filename>",
-  "readme": "NativeScript Application",
-  "repository": "<fill-your-repository-here>",
-  "scripts": {
-    "preclean": "npm i rimraf",
-    "clean": "rimraf node_modules lib hooks platforms target app/*.css app/**/*.js app/**/*.js.map",
-    "postclean": "npm install && npm i ../..",
-    "ngc": "ngc -p tsconfig.aot.json",
-    "tsc": "tsc -p tsconfig.json"
-  },
-  "nativescript": {
-    "id": "org.nativescript.sampleApp",
-    "tns-ios": {
-      "version": "3.0.1"
+    "description": "NativeScript Application",
+    "license": "SEE LICENSE IN <your-license-filename>",
+    "readme": "NativeScript Application",
+    "repository": "<fill-your-repository-here>",
+    "scripts": {
+        "preclean": "npm i rimraf",
+        "clean": "rimraf node_modules lib hooks platforms target app/*.css app/**/*.js app/**/*.js.map",
+        "postclean": "npm install && npm i ../..",
+        "ngc": "ngc -p tsconfig.aot.json",
+        "tsc": "tsc -p tsconfig.json",
+        "test-ios": "tns test ios --emulator --justlaunch",
+        "test-android": "tns test android --emulator --justlaunch --timeout 60000"
     },
-    "tns-android": {
-      "version": "3.0.1"
+    "nativescript": {
+        "id": "org.nativescript.sampleApp",
+        "tns-ios": {
+            "version": "3.0.1"
+        },
+        "tns-android": {
+            "version": "3.0.1"
+        }
+    },
+    "dependencies": {
+        "@angular/common": "4.0.3",
+        "@angular/compiler": "4.0.3",
+        "@angular/core": "4.0.3",
+        "@angular/forms": "4.0.3",
+        "@angular/http": "4.0.3",
+        "@angular/platform-browser": "4.0.3",
+        "@angular/platform-browser-dynamic": "4.0.3",
+        "@angular/router": "4.0.3",
+        "nativescript-angular": "3.0.0",
+        "nativescript-fabric": "file:../..",
+        "nativescript-theme-core": "1.0.4",
+        "nativescript-unit-test-runner": "0.3.4",
+        "reflect-metadata": "0.1.10",
+        "rxjs": "5.4.0",
+        "tns-core-modules": "3.0.0",
+        "zone.js": "0.8.10"
+    },
+    "devDependencies": {
+        "babel-traverse": "6.24.1",
+        "babel-types": "6.24.1",
+        "babylon": "6.17.1",
+        "jasmine-core": "2.6.1",
+        "karma": "1.7.0",
+        "karma-coverage": "1.1.1",
+        "karma-jasmine": "1.1.0",
+        "karma-junit-reporter": "1.2.0",
+        "karma-nativescript-launcher": "^0.4.0",
+        "lazy": "1.0.11",
+        "nativescript-dev-android-snapshot": "^0.*.*",
+        "nativescript-dev-typescript": "~0.3.5",
+        "typescript": "2.3.2"
     }
-  },
-  "dependencies": {
-    "@angular/common": "4.0.3",
-    "@angular/compiler": "4.0.3",
-    "@angular/core": "4.0.3",
-    "@angular/forms": "4.0.3",
-    "@angular/http": "4.0.3",
-    "@angular/platform-browser": "4.0.3",
-    "@angular/platform-browser-dynamic": "4.0.3",
-    "@angular/router": "4.0.3",
-    "nativescript-angular": "3.0.0",
-    "nativescript-fabric": "file:../..",
-    "nativescript-theme-core": "1.0.4",
-    "nativescript-unit-test-runner": "0.3.4",
-    "reflect-metadata": "0.1.10",
-    "rxjs": "5.4.0",
-    "tns-core-modules": "3.0.0",
-    "zone.js": "0.8.10"
-  },
-  "devDependencies": {
-    "babel-traverse": "6.24.1",
-    "babel-types": "6.24.1",
-    "babylon": "6.17.1",
-    "jasmine-core": "2.6.1",
-    "karma": "1.7.0",
-    "karma-coverage": "1.1.1",
-    "karma-jasmine": "1.1.0",
-    "karma-junit-reporter": "1.2.0",
-    "karma-nativescript-launcher": "^0.4.0",
-    "lazy": "1.0.11",
-    "nativescript-dev-android-snapshot": "^0.*.*",
-    "nativescript-dev-typescript": "~0.3.5",
-    "typescript": "2.3.2"
-  }
 }

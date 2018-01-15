@@ -1,4 +1,6 @@
 {
-    "apiKey": "e1e7a050ba618f4a665538581623e038db3179bb",
-    "apiSecret": "b94f7ceda24259690e047cd02e9922e5bd6aa2bfabd2dbac6ede7d6e45e6d956"
+    "using_ios": true,
+    "using_android": true,
+    "api_key": "e1e7a050ba618f4a665538581623e038db3179bb",
+    "api_secret": "b94f7ceda24259690e047cd02e9922e5bd6aa2bfabd2dbac6ede7d6e45e6d956"
 }

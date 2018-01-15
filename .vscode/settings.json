@@ -1,5 +1,7 @@
 {
     "typescript.tsdk": "./node_modules/typescript/lib",
     "vsicons.presets.angular": true,
-    "java.configuration.updateBuildConfiguration": "automatic"
+    "java.configuration.updateBuildConfiguration": "automatic",
+  // Standardmäßigen JavaScript-Formatierer aktivieren/deaktivieren.
+  "javascript.format.enable": true,
 }
