@@ -30,9 +30,9 @@ timeout(60) {
           parallel plugin:{
             sh "npm run clean && npm run build"
           }, demo: {
-            sh "cd ../demo && npm i"
+            sh "cd ../demo && rm -rf hooks/ node_modules/ platforms/ && npm i"
           }, demoAngular: {
-            sh "cd ../demo-angular && npm i"
+            sh "cd ../demo-angular && rm -rf hooks/ node_modules/ platforms/ && npm i"
           },
           failFast: true
 

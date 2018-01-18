@@ -42,7 +42,8 @@ matrix:
      os: linux
      jdk: oraclejdk8
      before_install:
-       - echo no | android create avd --force -n $EMULATOR_NAME -t "android-"$EMULATOR_API_LEVEL --abi $ANDROID_ABI --tag $ANDROID_TAG -c 12M
+       - android list targets
+       - echo no | android create avd --force -n $EMULATOR_NAME -t android-$EMULATOR_API_LEVEL --abi $ANDROID_ABI --tag $ANDROID_TAG -c 12M
        - QEMU_AUDIO_DRV=none emulator -avd $EMULATOR_NAME -no-window &
        - nvm install 6.10.3 && cd src && npm i && cd ..
      script:
@@ -96,10 +97,10 @@ components:
   - addon-google_apis-google-25
   # Specify at least one system image,
   # if you need to run emulator(s) during your tests
+  - android-$EMULATOR_API_LEVEL
   - sys-img-armeabi-v7a-android-26
   - sys-img-armeabi-v7a-android-25
-  - sys-img-armeabi-v7a-android-17
-  - sys-img-armeabi-v7a-android-19
+  - sys-img-armeabi-v7a-android-$EMULATOR_API_LEVEL
   - sys-img-armeabi-v7a-google_apis-$EMULATOR_API_LEVEL
 licenses:
   - ".+"
