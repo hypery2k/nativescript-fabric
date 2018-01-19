@@ -1,4 +1,4 @@
-import { NgModule, ErrorHandler, ModuleWithProviders, Provider, NO_ERRORS_SCHEMA } from "@angular/core";
+import { NgModule, ErrorHandler, ModuleWithProviders, Provider, NO_ERRORS_SCHEMA, NgZone } from "@angular/core";
 
 import { Fabric } from '..';
 import { FabricErrorHandler } from './errorhandler';
@@ -6,15 +6,15 @@ import { FabricErrorHandler } from './errorhandler';
 // init fabric
 Fabric.init();
 
-export function errorHandlerFactory(): ErrorHandler {
-  return new FabricErrorHandler();
+export function errorHandlerFactory(ngZone: NgZone): ErrorHandler {
+  return new FabricErrorHandler(ngZone);
 }
 
 @NgModule({
   declarations: [],
   providers: [],
   exports: [],
-  schemas: [ NO_ERRORS_SCHEMA ]
+  schemas: [NO_ERRORS_SCHEMA]
 })
 export class FabricModule {
 
@@ -22,7 +22,7 @@ export class FabricModule {
     return {
       ngModule: FabricModule,
       providers: [
-        { provide: ErrorHandler, useFactory: (errorHandlerFactory) }
+        { provide: ErrorHandler, useFactory: (errorHandlerFactory), deps: [NgZone] }
       ]
     };
   }
