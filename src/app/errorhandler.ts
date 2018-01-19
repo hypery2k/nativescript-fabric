@@ -53,7 +53,6 @@ export class FabricErrorHandler implements ErrorHandler {
    * @internal
    */
   handleError(err: any): void {
-    super.handleError(err);
     try {
       Fabric.logError(err);
     } catch (e) { }
