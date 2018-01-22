@@ -7,7 +7,7 @@ env:
    - IOS_PACKAGE_FOLDER=$TRAVIS_BUILD_DIR/demo/platforms/ios/build/emulator
    - IOS_SAUCE_STORAGE="https://saucelabs.com/rest/v1/storage/$SAUCE_USER/$IOS_PACKAGE?overwrite=true"
    - EMULATOR_NAME=test
-   - EMULATOR_API_LEVEL=22
+   - EMULATOR_API_LEVEL=25
    - ANDROID_TAG=google_apis
    - ANDROID_ABI=armeabi-v7a
 
