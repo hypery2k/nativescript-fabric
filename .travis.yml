@@ -43,7 +43,8 @@ matrix:
      jdk: oraclejdk8
      before_install:
        - android list targets
-       - echo no | android create avd --force -n $EMULATOR_NAME -t android-$EMULATOR_API_LEVEL --abi $ANDROID_ABI --tag $ANDROID_TAG -c 12M
+       - android list
+       - echo no | android create avd --force -n $EMULATOR_NAME -t android-$EMULATOR_API_LEVEL --abi $ANDROID_ABI -c 12M
        - QEMU_AUDIO_DRV=none emulator -avd $EMULATOR_NAME -no-window &
        - nvm install 6.10.3 && cd src && npm i && cd ..
      script:
