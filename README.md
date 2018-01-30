@@ -29,16 +29,6 @@ Plugin is still **WIP**
 
 ## Installation
 
-```
-$ tns plugin add nativescript-fabric
-```
-
-Or if you want to use the development version (nightly build), which maybe not stable!:
-
-```
-$ tns plugin add nativescript-fabric@next
-```
-
 
 Go to [Crashlytics](https://fabric.io/kits/ios/crashlytics/install) and pick of the needed API-Key and API-Secret:
 
@@ -53,6 +43,16 @@ Create a file fabric.json in the project root folder and add the API-Key and API
     "api_key": "...",
     "api_secret": "..."
 }
+```
+
+```
+$ tns plugin add nativescript-fabric
+```
+
+Or if you want to use the development version (nightly build), which maybe not stable!:
+
+```
+$ tns plugin add nativescript-fabric@next
 ```
 
 ### Android
