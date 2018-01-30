@@ -1,1 +1,1 @@
-[{"__symbolic":"module","version":4,"metadata":{"FabricErrorHandler":{"__symbolic":"class","extends":{"__symbolic":"reference","module":"@angular/core","name":"ErrorHandler"},"members":{"__ctor__":[{"__symbolic":"constructor"}],"handleError":[{"__symbolic":"method"}]}}}}]
+[{"__symbolic":"module","version":4,"metadata":{"FabricErrorHandler":{"__symbolic":"class","members":{"__ctor__":[{"__symbolic":"constructor","parameters":[{"__symbolic":"reference","module":"@angular/core","name":"NgZone"}]}],"handleError":[{"__symbolic":"method"}]}}}}]
