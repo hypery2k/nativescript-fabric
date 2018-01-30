@@ -6,7 +6,7 @@ properties properties: [
 @Library('mare-build-library')
 def nodeJS = new de.mare.ci.jenkins.NodeJS()
 
-timeout(90) {
+timeout(60) {
   node('nativescript') {
     def buildNumber = env.BUILD_NUMBER
     def branchName = env.BRANCH_NAME
@@ -30,9 +30,9 @@ timeout(90) {
           parallel plugin:{
             sh "npm run clean && npm run build"
           }, demo: {
-            sh "cd ../demo && rm -rf hooks/ node_modules/ platforms/ && npm i"
+            sh "cd ../demo && rm -rf hooks/ node_modules/ platforms/ && npm i npm run build-ios-bundle && npm run build-android-bundle"
           }, demoAngular: {
-            sh "cd ../demo-angular && rm -rf hooks/ node_modules/ platforms/ && npm i"
+            sh "cd ../demo-angular && rm -rf hooks/ node_modules/ platforms/ && npm i && npm run build-ios-bundle && npm run build-android-bundle"
           },
           failFast: true
 
@@ -49,15 +49,6 @@ timeout(90) {
           failFast: true
           junit '../demo/target/junit-report/TEST-*.xml'
         }
-      }
-
-      stage('End2End Test') {
-        parallel demo: {
-          sh "cd demo && npm run build.plugin && npm i && npm run build-ios-bundle && npm run build-android-bundle"
-        }, demoAngular: {
-          sh "cd demo-angular && npm run build.plugin && npm i && npm run build-ios-bundle && npm run build-android-bundle"
-        },
-        failFast: true
       }
 
       stage('Publish NPM snapshot') {

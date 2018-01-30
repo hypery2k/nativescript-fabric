@@ -1,8 +1,7 @@
 import { AppiumDriver, createDriver, SearchOptions } from "nativescript-dev-appium";
 import { assert } from "chai";
 
-let isAndroid = process.env.npm_config_runType.includes("android");
-let isSauceRun = process.env.npm_config_sauceLab;
+let isSauceRun = false;
 
 // CONFIG CONSTANTS
 const OVERALL_TIMEOUT = 800000;
@@ -14,6 +13,7 @@ describe("sample scenario", () => {
 
   before(async () => {
     driver = await createDriver();
+    isSauceRun = !!driver.sessionId;
   });
 
   after(async () => {
