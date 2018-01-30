@@ -23,6 +23,7 @@
 ## Your Environment
 
 **NativeScript version:**
+**Plugin version:**
 **Java version:**
 **NodeJS and NPM version:**
 **Platform(s) running:**
