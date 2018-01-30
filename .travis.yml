@@ -51,7 +51,7 @@ matrix:
        - QEMU_AUDIO_DRV=none emulator -avd $EMULATOR_NAME -no-window &
        - nvm install 6.10.3 && cd src && npm i && cd ..
      script:
-       - cd demo && npm run ci.android.build && tns test android --emulator --justlaunch && cd ../demo-angular && npm run ci.android.build
+       - cd demo && npm run ci.android.build && cd ../demo-angular && npm run ci.android.build
        - "curl -u $SAUCE_USER:$SAUCE_KEY -X POST -H 'Content-Type: application/octet-stream' $ANDROID_SAUCE_STORAGE --data-binary @$ANDROID_PACKAGE_FOLDER/$ANDROID_PACKAGE"
    - os: osx
      env:
@@ -63,7 +63,7 @@ matrix:
      jdk: oraclejdk8
      before_install: cd src && npm i && cd ..
      script:
-       - cd demo && npm run ci.ios.build && tns test ios --emulator --justlaunch && cd ../demo-angular && npm run ci.ios.build
+       - cd demo && npm run ci.ios.build && cd ../demo-angular && npm run ci.ios.build
        - cd $IOS_PACKAGE_FOLDER && zip -r $IOS_PACKAGE demo.app
        - "curl -u $SAUCE_USER:$SAUCE_KEY -X POST -H 'Content-Type: application/octet-stream' $IOS_SAUCE_STORAGE --data-binary @$IOS_PACKAGE_FOLDER/$IOS_PACKAGE"
    - stage: "UI Tests"

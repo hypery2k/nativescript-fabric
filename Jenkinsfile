@@ -6,7 +6,7 @@ properties properties: [
 @Library('mare-build-library')
 def nodeJS = new de.mare.ci.jenkins.NodeJS()
 
-timeout(60) {
+timeout(90) {
   node('nativescript') {
     def buildNumber = env.BUILD_NUMBER
     def branchName = env.BRANCH_NAME
@@ -42,12 +42,12 @@ timeout(60) {
           parallel unit:{
             sh "npm run test"
           }, iOS: {
-            sh "cd ../demo && npm run ci.ios.build" // && tns test ios --justlaunch --emulator"
+            sh "cd ../demo && npm run ci.ios.build && tns test ios --justlaunch --emulator"
           }, Android: {
-            sh "cd ../demo && npm run ci.android.build" // && tns test android --justlaunch --emulator"
+            sh "cd ../demo && npm run ci.android.build && tns test android --justlaunch --emulator"
           },
           failFast: true
-          // junit 'target/junit-report/TEST-*.xml'
+          junit '../demo/target/junit-report/TEST-*.xml'
         }
       }
 

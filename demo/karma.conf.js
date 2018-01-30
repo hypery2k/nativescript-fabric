@@ -80,8 +80,8 @@ module.exports = function(config) {
          * See https://github.com/karma-runner/karma-junit-reporter#configuration
          */
         junitReporter: {
-            outputDir: 'target/surefire-reports', // results will be saved as $outputDir/$browserName.xml
-            outputFile: 'TEST-Fabrc.xml', // if included, results will be saved as $outputDir/$browserName/$outputFile
+            outputDir: 'target/junit-report', // results will be saved as $outputDir/$browserName.xml
+            outputFile: 'TEST-Fabric.xml', // if included, results will be saved as $outputDir/$browserName/$outputFile
             suite: 'Fabrc-Test-MobileApp', // suite will become the package name attribute in xml testsuite element
             useBrowserName: false, // add browser name to report and classes names
         },
