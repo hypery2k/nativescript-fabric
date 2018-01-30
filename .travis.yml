@@ -7,9 +7,12 @@ env:
    - IOS_PACKAGE_FOLDER=$TRAVIS_BUILD_DIR/demo/platforms/ios/build/emulator
    - IOS_SAUCE_STORAGE="https://saucelabs.com/rest/v1/storage/$SAUCE_USER/$IOS_PACKAGE?overwrite=true"
    - EMULATOR_NAME=test
-   - EMULATOR_API_LEVEL=25
-   - ANDROID_TAG=google_apis
+   - EMULATOR_API_LEVEL=21
+   - ANDROID_API_LEVEL=23
+   - ANDROID_BUILD_TOOLS_VERSION=23.0.2
    - ANDROID_ABI=armeabi-v7a
+   - ANDROID_TAG=google_apis
+   - ADB_INSTALL_TIMEOUT=20 # minutes (2 minutes by default)
 
 matrix:
  include:
@@ -38,13 +41,13 @@ matrix:
    - stage: "Build"
      env:
        - BuildAndroid="26"
-     language: android
+     language: android********************************************************************************************************************************************
      os: linux
      jdk: oraclejdk8
      before_install:
        - android list targets
        - android list
-       - echo no | android create avd --force -n $EMULATOR_NAME -t android-$EMULATOR_API_LEVEL --abi $ANDROID_ABI -c 12M
+       - echo no | android create avd --force -n $EMULATOR_NAME -t "android-"$EMULATOR_API_LEVEL --abi $ANDROID_ABI --tag $ANDROID_TAG
        - QEMU_AUDIO_DRV=none emulator -avd $EMULATOR_NAME -no-window &
        - nvm install 6.10.3 && cd src && npm i && cd ..
      script:
@@ -86,23 +89,26 @@ matrix:
        - travis_wait travis_retry npm run e2e -- --runType sim103iPhone6 --sauceLab --reuseDevice --appPath $IOS_PACKAGE
 
 android:
-components:
-  - tools
-  - platform-tools
-  - build-tools-25.0.2
-  - android-25
-  - android-$EMULATOR_API_LEVEL
-  - extra-google-google_play_services
-  - extra-google-m2repository
-  - extra-android-m2repository
-  - addon-google_apis-google-25
-  # Specify at least one system image,
-  # if you need to run emulator(s) during your tests
-  - android-$EMULATOR_API_LEVEL
-  - sys-img-armeabi-v7a-android-26
-  - sys-img-armeabi-v7a-android-25
-  - sys-img-armeabi-v7a-android-$EMULATOR_API_LEVEL
-  - sys-img-armeabi-v7a-google_apis-$EMULATOR_API_LEVEL
+ components:
+   - tools # to get the new `repository-11.xml`
+   - platform-tools
+   - tools # to install Android SDK tools 25.1.x
+   - build-tools-$ANDROID_BUILD_TOOLS_VERSION
+   - android-$ANDROID_API_LEVEL
+   - android-$EMULATOR_API_LEVEL
+   # For Google APIs
+   - addon-google_apis-google-$ANDROID_API_LEVEL
+   - addon-google_apis-google-$EMULATOR_API_LEVEL
+   # Google Play Services
+   - extra-google-google_play_services
+   # Support library
+   - extra-android-support
+   # Latest artifacts in local repository
+   - extra-google-m2repository
+   - extra-android-m2repository
+   # Specify at least one system image
+   - sys-img-armeabi-v7a-google_apis-$ANDROID_API_LEVEL
+   - sys-img-armeabi-v7a-google_apis-$EMULATOR_API_LEVEL
 licenses:
   - ".+"
 
