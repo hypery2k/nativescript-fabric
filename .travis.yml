@@ -41,7 +41,7 @@ matrix:
    - stage: "Build"
      env:
        - BuildAndroid="26"
-     language: android********************************************************************************************************************************************
+     language: android
      os: linux
      jdk: oraclejdk8
      before_install:
