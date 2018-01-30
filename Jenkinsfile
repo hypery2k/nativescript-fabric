@@ -30,7 +30,7 @@ timeout(60) {
           parallel plugin:{
             sh "npm run clean && npm run build"
           }, demo: {
-            sh "cd ../demo && rm -rf hooks/ node_modules/ platforms/ && npm i npm run build-ios-bundle && npm run build-android-bundle"
+            sh "cd ../demo && rm -rf hooks/ node_modules/ platforms/ && npm i && npm run build-ios-bundle && npm run build-android-bundle"
           }, demoAngular: {
             sh "cd ../demo-angular && rm -rf hooks/ node_modules/ platforms/ && npm i && npm run build-ios-bundle && npm run build-android-bundle"
           },
