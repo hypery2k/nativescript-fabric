@@ -21,7 +21,7 @@ matrix:
      os: linux
      node_js: "6"
      script: cd src && npm run ci.tslint && npm run build && cd ../demo && npm run ci.tslint && cd ../demo-angular && npm run ci.tslint
-     - stage: "WebPack and Build"
+   - stage: "WebPack and Build"
      os: osx
      env:
        - WebpackiOS="11"
