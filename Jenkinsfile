@@ -43,7 +43,7 @@ timeout(150) {
           parallel unit:{
             sh "npm run test"
           }, iOS: {
-            sh "cd ../demo && npm run ci.ios.build && tns test ios --justlaunch --emulator"
+            sh "cd ../demo && npm run ci.ios.build" //FIXME && tns test ios --justlaunch --emulator"
           }, Android: {
             sh "cd ../demo && npm run ci.android.build" //FIXME && tns test android --justlaunch --emulator"
           },
