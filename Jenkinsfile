@@ -6,7 +6,7 @@ properties properties: [
 @Library('mare-build-library')
 def nodeJS = new de.mare.ci.jenkins.NodeJS()
 
-timeout(60) {
+timeout(90) {
   node('nativescript') {
     def buildNumber = env.BUILD_NUMBER
     def branchName = env.BRANCH_NAME
