@@ -3028,7 +3028,7 @@ module.exports = function($logger, $projectData, hookArgs) {
             var options = { shellPath: '/bin/sh', shellScript: podsPath + '/Fabric/run ' + apiKey + ' ' + apiSecret };
             var buildPhase = xcodeProject.addBuildPhase([], 'PBXShellScriptBuildPhase', 'Configure Fabric', xcodeProject.getFirstTarget().uuid, options).buildPhase;
             fs.writeFileSync(projectPath, xcodeProject.writeSync());
-            $logger.trace('Updateded Xcode project');
+            $logger.trace('Updated Xcode project');
 
             var appPlist = plist.readFileSync(plistPath);
             plist.Fabric = {
@@ -3042,7 +3042,7 @@ module.exports = function($logger, $projectData, hookArgs) {
                 }]
             }
             plist.writeFileSync(plistPath, appPlist);
-            $logger.trace('Updateded Plist');
+            $logger.trace('Updated Plist');
         }
     }
 };

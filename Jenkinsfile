@@ -48,7 +48,7 @@ timeout(150) {
             sh "cd ../demo && npm run ci.android.build" //FIXME && tns test android --justlaunch --emulator"
           },
           failFast: true
-          junit '../demo/target/junit-report/TEST-*.xml'
+          // junit '../demo/target/junit-report/TEST-*.xml'
         }
       }
 
