@@ -460,7 +460,7 @@ module.exports = function($logger, $projectData, hookArgs) {
           }
 
           if (fs.pathExistsSync(gradleAppScript)) {
-            updateAppGradleScript(gradleAppScript);
+            //updateAppGradleScript(gradleAppScript);
             updateGradleScript(gradleScript);
             settingsJson = path.join(__dirname, "..", "..", "platforms", "android", "app", "src", "main", "res", "fabric.properties");
           } else {
