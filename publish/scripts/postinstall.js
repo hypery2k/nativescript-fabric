@@ -2,6 +2,12 @@ var fs = require('fs');
 var path = require('path');
 var prompt = require('prompt-lite');
 
+const FABRIC_GRADLE_TOOLS = '1.15.2'
+const FABRIC_ANDROID_CRASHLYTICS = '2.8.0';
+const FABRIC_ANDROID_ANSWERS = '1.4.1';
+const FABRIC_IOS_CRASHLYTICS = '3.9.3';
+const FABRIC_IOS_FABRIC = '1.7.2';
+
 // Default settings for using ios and android with Fabric
 var usingiOS = false,
     usingAndroid = false;
@@ -286,8 +292,8 @@ function writePodFile(result) {
     try {
         fs.writeFileSync(directories.ios + '/Podfile',
             `use_frameworks!
-pod 'Fabric'
-pod 'Crashlytics'
+pod 'Fabric', '${FABRIC_IOS_FABRIC}'
+pod 'Crashlytics', '${FABRIC_IOS_CRASHLYTICS}'
 # Crashlytics works best without bitcode
 post_install do |installer|
     installer.pods_project.targets.each do |target|
@@ -331,13 +337,15 @@ repositories {
 }
 
 dependencies {
-  compile('com.crashlytics.sdk.android:crashlytics:2.6.8@aar') {
+  compile('com.crashlytics.sdk.android:crashlytics:${FABRIC_ANDROID_CRASHLYTICS}@aar') {
     transitive = true;
   }
-  compile('com.crashlytics.sdk.android:answers:1.4.1@aar') {
+  compile('com.crashlytics.sdk.android:answers:${FABRIC_ANDROID_ANSWERS}@aar') {
     transitive = true;
   }
 }
+
+apply plugin: "io.fabric"
 
 `);
         console.log('Successfully created Android (include.gradle) file.');
@@ -383,12 +391,16 @@ module.exports = function($logger, $projectData, hookArgs) {
       if (search == -1) {
           return;
       }
-      appBuildGradleContent = appBuildGradleContent.substr(0, search + 14) + '\\n	compile("com.crashlytics.sdk.android:crashlytics:2.8.0@aar") {\\n		transitive = true;\\n	}\\n' + appBuildGradleContent.substr(search + 14);
+      appBuildGradleContent = appBuildGradleContent.substr(0, search + 14) + '\\n	compile("com.crashlytics.sdk.android:crashlytics:${FABRIC_ANDROID_CRASHLYTICS}@aar") {\\n		transitive = true;\\n	}\\n' + appBuildGradleContent.substr(search + 14);
 
       // TODO add to buildTypes entry
       // appBuildGradleContent = appBuildGradleContent + '\\ndebug { \\n   ext.enableCrashlytics = false\\n}\\n';
 
-      appBuildGradleContent = appBuildGradleContent + '\\napply plugin: "io.fabric"\\n';
+      // search = appBuildGradleContent.indexOf('apply plugin: "com.android.application"', 0);
+      // if (search == -1) {
+      //    return;
+      // }
+      //appBuildGradleContent = appBuildGradleContent.substr(0, search + 39) + '\\napply plugin: "io.fabric"\\n' + appBuildGradleContent.substr(search + 39);
 
       fs.writeFileSync(file, appBuildGradleContent);
       $logger.trace('Written build.gradle');
@@ -417,7 +429,7 @@ module.exports = function($logger, $projectData, hookArgs) {
       if (search == -1) {
           return;
       }
-      buildGradleContent = buildGradleContent.substr(0, search - 1) + '	    classpath "io.fabric.tools:gradle:1.15.2"\\n' + buildGradleContent.substr(search - 1);
+      buildGradleContent = buildGradleContent.substr(0, search - 1) + '	    classpath "io.fabric.tools:gradle:${FABRIC_GRADLE_TOOLS}"\\n' + buildGradleContent.substr(search - 1);
 
 
       fs.writeFileSync(file, buildGradleContent);
