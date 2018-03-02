@@ -396,11 +396,11 @@ module.exports = function($logger, $projectData, hookArgs) {
       // TODO add to buildTypes entry
       // appBuildGradleContent = appBuildGradleContent + '\\ndebug { \\n   ext.enableCrashlytics = false\\n}\\n';
 
-      // search = appBuildGradleContent.indexOf('apply plugin: "com.android.application"', 0);
-      // if (search == -1) {
-      //    return;
-      // }
-      //appBuildGradleContent = appBuildGradleContent.substr(0, search + 39) + '\\napply plugin: "io.fabric"\\n' + appBuildGradleContent.substr(search + 39);
+      search = appBuildGradleContent.indexOf("apply plugin: \\"com.android.application\\"");
+      if (search == -1) {
+          return;
+      }
+      appBuildGradleContent = appBuildGradleContent.substr(0, search + 39) + '\\napply plugin: "io.fabric"\\n' + appBuildGradleContent.substr(search + 39);
 
       fs.writeFileSync(file, appBuildGradleContent);
       $logger.trace('Written build.gradle');
@@ -431,7 +431,6 @@ module.exports = function($logger, $projectData, hookArgs) {
       }
       buildGradleContent = buildGradleContent.substr(0, search - 1) + '	    classpath "io.fabric.tools:gradle:${FABRIC_GRADLE_TOOLS}"\\n' + buildGradleContent.substr(search - 1);
 
-
       fs.writeFileSync(file, buildGradleContent);
       $logger.trace('Written build.gradle');
     }
@@ -460,12 +459,13 @@ module.exports = function($logger, $projectData, hookArgs) {
           }
 
           if (fs.pathExistsSync(gradleAppScript)) {
-            //updateAppGradleScript(gradleAppScript);
+            updateAppGradleScript(gradleAppScript);
             updateGradleScript(gradleScript);
-            settingsJson = path.join(__dirname, "..", "..", "platforms", "android", "app", "src", "main", "res", "fabric.properties");
           } else {
             updateGradleScript(gradleScript);
           }
+
+          settingsJson = path.join(__dirname, "..", "..", "platforms", "android", "app", "src", "main", "res", "fabric.properties");
 
           var propertiesContent = '# Contains API Secret used to validate your application. Commit to internal source control; avoid making secret public\\n';
           propertiesContent+='apiKey = ' + apiKey + '\\n';
