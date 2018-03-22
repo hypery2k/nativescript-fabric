@@ -3185,12 +3185,6 @@ module.exports = function($logger, $projectData, hookArgs) {
       }
       appBuildGradleContent = appBuildGradleContent.substr(0, search + 14) + '	    maven { url "https://maven.fabric.io/public" }\\n' + appBuildGradleContent.substr(search + 14);
 
-      search = appBuildGradleContent.indexOf("dependencies {", search);
-      if (search == -1) {
-          return;
-      }
-      appBuildGradleContent = appBuildGradleContent.substr(0, search + 14) + '\\n	compile("com.crashlytics.sdk.android:crashlytics:${FABRIC_ANDROID_CRASHLYTICS}@aar") {\\n		transitive = true;\\n	}\\n' + appBuildGradleContent.substr(search + 14);
-
       // TODO add to buildTypes entry
       // appBuildGradleContent = appBuildGradleContent + '\\ndebug { \\n   ext.enableCrashlytics = false\\n}\\n';
 
