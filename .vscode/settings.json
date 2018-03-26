@@ -4,4 +4,5 @@
     "java.configuration.updateBuildConfiguration": "automatic",
   // Standardmäßigen JavaScript-Formatierer aktivieren/deaktivieren.
   "javascript.format.enable": true,
+  "git.ignoreLimitWarning": true,
 }
