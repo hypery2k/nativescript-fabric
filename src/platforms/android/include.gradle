@@ -1,0 +1,25 @@
+
+android {
+  productFlavors {
+    "fabric" {
+      dimension "fabric"
+    }
+  }
+}
+
+repositories {
+  mavenCentral()
+  maven { url 'https://maven.fabric.io/public' }
+}
+
+dependencies {
+  compile('com.crashlytics.sdk.android:crashlytics:2.8.0@aar') {
+    transitive = true;
+  }
+  compile('com.crashlytics.sdk.android:answers:1.4.1@aar') {
+    transitive = true;
+  }
+}
+
+apply plugin: "io.fabric"
+
