@@ -2800,11 +2800,11 @@ var fs = __webpack_require__(/*! fs */ 2);
 var path = __webpack_require__(/*! path */ 3);
 var prompt = __webpack_require__(/*! prompt-lite */ 1);
 
-const FABRIC_GRADLE_TOOLS = '1.15.2'
-const FABRIC_ANDROID_CRASHLYTICS = '2.8.0';
+const FABRIC_GRADLE_TOOLS = '1.+'
+const FABRIC_ANDROID_CRASHLYTICS = '2.9.1';
 const FABRIC_ANDROID_ANSWERS = '1.4.1';
-const FABRIC_IOS_CRASHLYTICS = '3.9.3';
-const FABRIC_IOS_FABRIC = '1.7.2';
+const FABRIC_IOS_CRASHLYTICS = '3.10.1';
+const FABRIC_IOS_FABRIC = '1.7.6';
 
 // Default settings for using ios and android with Fabric
 var usingiOS = false,

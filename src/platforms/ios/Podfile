@@ -1,6 +1,6 @@
 use_frameworks!
-pod 'Fabric', '1.7.2'
-pod 'Crashlytics', '3.9.3'
+pod 'Fabric', '1.7.6'
+pod 'Crashlytics', '3.10.1'
 # Crashlytics works best without bitcode
 post_install do |installer|
     installer.pods_project.targets.each do |target|
