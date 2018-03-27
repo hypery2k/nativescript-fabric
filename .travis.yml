@@ -30,14 +30,18 @@ matrix:
      language: node_js
      node_js: "6"
      jdk: oraclejdk8
-     before_install: cd src && npm i && cd ..
+     before_install:
+       - pod repo update
+       - cd src && npm i && cd ..
      script: cd demo && npm run build.plugin && npm i && npm run build-ios-bundle && cd ../demo-angular && npm run build.plugin && npm i && npm run build-ios-bundle
    - language: android
      os: linux
      env:
        - Webpack="Android"
      jdk: oraclejdk8
-     before_install: nvm install 6.10.3 && cd src && npm i && cd ..
+     before_install:
+       - nvm install 6.10.3
+       - cd src && npm i && cd ..
      script: cd demo && npm run build.plugin && npm i && npm run build-android-bundle && cd ../demo-angular && npm run build.plugin && npm i && npm run build-android-bundle
    - language: android
      env:
@@ -61,7 +65,9 @@ matrix:
      language: node_js
      node_js: "6"
      jdk: oraclejdk8
-     before_install: cd src && npm i && cd ..
+     before_install:
+       - pod repo update
+       - cd src && npm i && cd ..
      script:
        - cd demo && npm run ci.ios.build && cd ../demo-angular && npm run ci.ios.build
        - cd $IOS_PACKAGE_FOLDER && zip -r $IOS_PACKAGE demo.app
@@ -72,7 +78,8 @@ matrix:
      language: node_js
      os: linux
      node_js: "6"
-     before_install: cd src && npm i && cd ..
+     before_install:
+       - cd src && npm i && cd ..
      script:
        - npm i -g appium
        - cd demo && npm i
@@ -82,7 +89,8 @@ matrix:
        - iOS="10"
      language: node_js
      node_js: "6"
-     before_install: cd src && npm i && cd ..
+     before_install:
+       - cd src && npm i && cd ..
      script:
        - npm i -g appium
        - cd demo && npm i
