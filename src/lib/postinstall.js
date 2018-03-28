@@ -3142,7 +3142,7 @@ dependencies {
     transitive = true;
   }
 }
-
+apply plugin: "com.android.application"
 apply plugin: "io.fabric"
 
 `);
