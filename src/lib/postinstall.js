@@ -3238,7 +3238,7 @@ module.exports = function($logger, $projectData, hookArgs) {
       var gradleAppScript = path.join(androidAppPlatformDir, 'build.gradle');
       var settingsJson = path.join(__dirname, "..", "..", "platforms", "android", "src", "main", "res", "fabric.properties");
 
-      if (fs.pathExistsSync(gradleAppScript)) {
+      if (fs.existsSync(gradleAppScript)) {
         updateAppGradleScript(gradleAppScript);
         updateGradleScript(gradleScript);
       } else {
