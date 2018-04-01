@@ -371,7 +371,7 @@ function writeFabricServiceGradleHook(config) {
         var scriptContent =
             `
 var path = require("path");
-var fs;
+var fs = require("fs");
 module.exports = function($logger, $projectData, hookArgs) {
   var platform = hookArgs.platform.toLowerCase();
 
@@ -431,12 +431,6 @@ module.exports = function($logger, $projectData, hookArgs) {
   }
 
   if (platform === 'android') {
-      // hack for node resolution not working in some cases
-      try {
-        fs = require("fs-extra");
-      } catch (ignored) {
-        fs = require("../../node_modules/nativescript-fabric/node_modules/fs-extra/lib/index.js");
-      }
 
       var apiKey = "${config.api_key}";
       var apiSecret = "${config.api_secret}";
@@ -445,29 +439,22 @@ module.exports = function($logger, $projectData, hookArgs) {
       var gradleScript = path.join(androidPlatformDir, 'build.gradle');
       var gradleAppScript = path.join(androidAppPlatformDir, 'build.gradle');
       var settingsJson = path.join(__dirname, "..", "..", "platforms", "android", "src", "main", "res", "fabric.properties");
-      fs.ensureDir(androidPlatformDir, function(err) {
 
-          if (err) {
-            $logger.error(err);
-            throw err;
-          }
+      if (fs.existsSync(gradleAppScript)) {
+        updateAppGradleScript(gradleAppScript);
+        updateGradleScript(gradleScript);
+      } else {
+        updateGradleScript(gradleScript);
+      }
 
-          if (fs.pathExistsSync(gradleAppScript)) {
-            updateAppGradleScript(gradleAppScript);
-            updateGradleScript(gradleScript);
-          } else {
-            updateGradleScript(gradleScript);
-          }
+      settingsJson = path.join(__dirname, "..", "..", "platforms", "android", "app", "src", "main", "res", "fabric.properties");
 
-          settingsJson = path.join(__dirname, "..", "..", "platforms", "android", "app", "src", "main", "res", "fabric.properties");
+      var propertiesContent = '# Contains API Secret used to validate your application. Commit to internal source control; avoid making secret public\\n';
+      propertiesContent+='apiKey = ' + apiKey + '\\n';
+      propertiesContent+='apiSecret = ' + apiSecret + '\\n';
+      fs.writeFileSync(settingsJson, propertiesContent);
+      $logger.trace('Written fabric.properties');
 
-          var propertiesContent = '# Contains API Secret used to validate your application. Commit to internal source control; avoid making secret public\\n';
-          propertiesContent+='apiKey = ' + apiKey + '\\n';
-          propertiesContent+='apiSecret = ' + apiSecret + '\\n';
-          fs.writeFileSync(settingsJson, propertiesContent);
-          $logger.trace('Written fabric.properties');
-
-      });
   }
 };
 `;
