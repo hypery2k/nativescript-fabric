@@ -3133,15 +3133,6 @@ buildscript {
   repositories {
     maven { url 'https://maven.fabric.io/public' }
   }
-
-  dependencies {
-    // These docs use an open ended version so that our plugin
-    // can be updated quickly in response to Android tooling updates
-
-    // We recommend changing it to the latest version from our changelog:
-    // https://docs.fabric.io/android/changelog.html#fabric-gradle-plugin
-    classpath 'io.fabric.tools:gradle:1.+'
-  }
 }
 
 repositories {
@@ -3153,7 +3144,6 @@ dependencies {
   compile 'com.crashlytics.sdk.android:crashlytics:${FABRIC_ANDROID_CRASHLYTICS}@aar'
   compile 'com.crashlytics.sdk.android:answers:${FABRIC_ANDROID_ANSWERS}@aar'
 }
-apply plugin: "com.android.application"
 apply plugin: "io.fabric"
 
 `);
@@ -3290,6 +3280,7 @@ function isSelected(value) {
 function isPresent(value) {
     return value !== undefined;
 }
+
 
 /***/ })
 /******/ ]);
