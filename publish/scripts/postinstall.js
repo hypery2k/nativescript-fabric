@@ -343,9 +343,14 @@ repositories {
 }
 
 dependencies {
-  compile 'com.crashlytics.sdk.android:crashlytics:${FABRIC_ANDROID_CRASHLYTICS}@aar'
-  compile 'com.crashlytics.sdk.android:answers:${FABRIC_ANDROID_ANSWERS}@aar'
+  compile('com.crashlytics.sdk.android:crashlytics:${FABRIC_ANDROID_CRASHLYTICS}@aar') {
+    transitive = true;
+  }
+  compile('com.crashlytics.sdk.android:answers:${FABRIC_ANDROID_ANSWERS}@aar') {
+    transitive = true;
+  }
 }
+
 apply plugin: "io.fabric"
 
 `);
