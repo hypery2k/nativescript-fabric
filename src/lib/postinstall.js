@@ -3141,7 +3141,6 @@ dependencies {
   }
 }
 
-apply plugin: "io.fabric"
 
 `);
         console.log('Successfully created Android (include.gradle) file.');

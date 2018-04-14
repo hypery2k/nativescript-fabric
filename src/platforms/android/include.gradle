@@ -17,5 +17,4 @@ dependencies {
     transitive = true;
   }
 }
-apply plugin: "io.fabric"
 
