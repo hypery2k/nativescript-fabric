@@ -1,12 +1,3 @@
-
-android {
-  productFlavors {
-    "fabric" {
-      dimension "fabric"
-    }
-  }
-}
-
 buildscript {
   repositories {
     maven { url 'https://maven.fabric.io/public' }

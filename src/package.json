@@ -20,16 +20,13 @@
         "ci.tslint": "npm i && tslint '**/*.ts' --config '../tslint.json' --exclude '**/node_modules/**' --exclude '**/test/**'",
         "e2e": "npm run e2e:ios && npm run e2e:android",
         "e2e:ios": "cd test/e2e && tns test ios --emulator --justlaunch",
-        "e2e:android": "cd test/e2e && tns test android --emulator --justlaunch",
-        "postinstall": "node postinstall-hooks.js && node lib/postinstall.js",
-        "preuninstall": "node preuninstall-hooks.js"
+        "e2e:android": "cd test/e2e && tns test android --emulator --justlaunch"
     },
     "main": "fabric",
     "module": "fabric.js",
     "typings": "index.d.ts",
     "dependencies": {
         "format": "0.2.2",
-        "nativescript-hook": "0.2.2",
         "prompt-lite": "0.1.1",
         "simple-plist": "0.2.1",
         "xcode": "1.0.0",

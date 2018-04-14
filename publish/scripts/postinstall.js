@@ -323,14 +323,6 @@ function writeGradleFile() {
     try {
         fs.writeFileSync(directories.android + '/include.gradle',
             `
-android {
-  productFlavors {
-    "fabric" {
-      dimension "fabric"
-    }
-  }
-}
-
 buildscript {
   repositories {
     maven { url 'https://maven.fabric.io/public' }
@@ -430,6 +422,12 @@ module.exports = function($logger, $projectData, hookArgs) {
           return;
       }
       buildGradleContent = buildGradleContent.substr(0, search - 1) + '	    classpath "io.fabric.tools:gradle:${FABRIC_GRADLE_TOOLS}"\\n' + buildGradleContent.substr(search - 1);
+      
+      search = buildGradleContent.indexOf("apply plugin: \\"com.android.application\\"");
+      if (search == -1) {
+          return;
+      }
+      buildGradleContent = buildGradleContent.substr(0, search + 39) + '\\napply plugin: "io.fabric"\\n' + buildGradleContent.substr(search + 39);
 
       fs.writeFileSync(file, buildGradleContent);
       $logger.trace('Written build.gradle');
@@ -446,12 +444,7 @@ module.exports = function($logger, $projectData, hookArgs) {
       var gradleAppScript = path.join(androidAppPlatformDir, 'build.gradle');
       var settingsJson = path.join(__dirname, "..", "..", "platforms", "android", "src", "main", "res", "fabric.properties");
 
-      if (fs.existsSync(gradleAppScript)) {
-        updateAppGradleScript(gradleAppScript);
-        updateGradleScript(gradleScript);
-      } else {
-        updateGradleScript(gradleScript);
-      }
+      updateGradleScript(gradleScript);
 
       settingsJson = path.join(__dirname, "..", "..", "platforms", "android", "app", "src", "main", "res", "fabric.properties");
 
