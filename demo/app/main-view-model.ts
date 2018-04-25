@@ -1,6 +1,8 @@
 import { Observable } from 'data/observable';
 import { Fabric } from 'nativescript-fabric';
 
+declare const java: any;
+
 export class HelloWorldModel extends Observable {
 
   private _counter: number;
@@ -28,6 +30,7 @@ export class HelloWorldModel extends Observable {
   public onTap() {
     this._counter--;
     this.updateMessage();
+    throw new java.lang.RuntimeException("This is a crash!");
   }
 
   private updateMessage() {

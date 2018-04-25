@@ -433,26 +433,49 @@ module.exports = function($logger, $projectData, hookArgs) {
     }
   }
 
-  if (platform === 'android') {
+  function updateGradleAppScript(file) {
+    let appBuildGradleContent = fs.readFileSync(file).toString();
+    if (appBuildGradleContent.indexOf("buildMetadata.finalizedBy(copyMetadata)") === -1) {
+      appBuildGradleContent = appBuildGradleContent.replace("ensureMetadataOutDir.finalizedBy(buildMetadata)", "ensureMetadataOutDir.finalizedBy(buildMetadata)\\n\\t\\tbuildMetadata.finalizedBy(copyMetadata)");
+      appBuildGradleContent += \`
+task copyMetadata {
+  doLast {
+    copy {
+        from "$projectDir/src/main/assets/metadata"
+        def toDir = project.hasProperty("release") ? "release" : "debug";
+        if (new File("$projectDir/build/intermediates/assets").listFiles() != null) {
+          toDir = new File("$projectDir/build/intermediates/assets").listFiles()[0].name
+          if (toDir != 'debug' && toDir != 'release') {
+            toDir += "/release"
+          }
+        }
+        into "$projectDir/build/intermediates/assets/" + toDir + "/metadata"
+    }
+  }
+}
+\`;
+      fs.writeFileSync(file, appBuildGradleContent);
+    }
+  }
 
+  if (platform === 'android') {
       var apiKey = "${config.api_key}";
       var apiSecret = "${config.api_secret}";
       var androidPlatformDir = path.join(__dirname, "..", "..", 'platforms', 'android');
       var androidAppPlatformDir = path.join(__dirname, "..", "..", 'platforms', 'android', 'app');
       var gradleScript = path.join(androidPlatformDir, 'build.gradle');
       var gradleAppScript = path.join(androidAppPlatformDir, 'build.gradle');
-      var settingsJson = path.join(__dirname, "..", "..", "platforms", "android", "src", "main", "res", "fabric.properties");
 
       updateGradleScript(gradleScript);
+      updateGradleAppScript(gradleAppScript);
 
-      settingsJson = path.join(__dirname, "..", "..", "platforms", "android", "app", "src", "main", "res", "fabric.properties");
+      var settingsJson = path.join(__dirname, "..", "..", "platforms", "android", "app", "src", "main", "res", "fabric.properties");
 
       var propertiesContent = '# Contains API Secret used to validate your application. Commit to internal source control; avoid making secret public\\n';
       propertiesContent+='apiKey = ' + apiKey + '\\n';
       propertiesContent+='apiSecret = ' + apiSecret + '\\n';
       fs.writeFileSync(settingsJson, propertiesContent);
       $logger.trace('Written fabric.properties');
-
   }
 };
 `;
