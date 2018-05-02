@@ -1,4 +1,4 @@
-import { ErrorHandler } from '@angular/core';
+import { ErrorHandler, NgZone } from '@angular/core';
 import { Fabric } from '..';
 
 /**
@@ -41,16 +41,18 @@ import { Fabric } from '..';
  *
  * More information about Angular's [`ErrorHandler`](https://angular.io/docs/ts/latest/api/core/index/ErrorHandler-class.html).
  */
-export class FabricErrorHandler extends ErrorHandler {
+export class FabricErrorHandler implements ErrorHandler {
 
-  constructor() {
-    super();
+  constructor(private ngZone: NgZone) {
+    // handle zone errors, too
+    this.ngZone.onError.subscribe((err) => {
+      Fabric.logError(err);
+    });
   }
   /**
    * @internal
    */
   handleError(err: any): void {
-    super.handleError(err);
     try {
       Fabric.logError(err);
     } catch (e) { }

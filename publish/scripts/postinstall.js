@@ -2,6 +2,12 @@ var fs = require('fs');
 var path = require('path');
 var prompt = require('prompt-lite');
 
+const FABRIC_GRADLE_TOOLS = '1.+'
+const FABRIC_ANDROID_CRASHLYTICS = '2.9.1';
+const FABRIC_ANDROID_ANSWERS = '1.4.1';
+const FABRIC_IOS_CRASHLYTICS = '3.10.1';
+const FABRIC_IOS_FABRIC = '1.7.6';
+
 // Default settings for using ios and android with Fabric
 var usingiOS = false,
     usingAndroid = false;
@@ -195,7 +201,7 @@ var plist;
 
 module.exports = function($logger, $projectData, hookArgs) {
     var platform = hookArgs.platform.toLowerCase();
-    if (platform == 'ios') {
+    if (platform === 'ios') {
         // hack for node resolution not working in some cases
         try {
             xcode = require("xcode");
@@ -230,7 +236,7 @@ module.exports = function($logger, $projectData, hookArgs) {
             var options = { shellPath: '/bin/sh', shellScript: podsPath + '/Fabric/run ' + apiKey + ' ' + apiSecret };
             var buildPhase = xcodeProject.addBuildPhase([], 'PBXShellScriptBuildPhase', 'Configure Fabric', xcodeProject.getFirstTarget().uuid, options).buildPhase;
             fs.writeFileSync(projectPath, xcodeProject.writeSync());
-            $logger.trace('Updateded Xcode project');
+            $logger.trace('Updated Xcode project');
 
             var appPlist = plist.readFileSync(plistPath);
             plist.Fabric = {
@@ -244,16 +250,16 @@ module.exports = function($logger, $projectData, hookArgs) {
                 }]
             }
             plist.writeFileSync(plistPath, appPlist);
-            $logger.trace('Updateded Plist');
+            $logger.trace('Updated Plist');
         }
-        console.log("Writing 'Fabric-build-xcode.js' to " + appRoot + "hooks/after-prepare");
-        var scriptPath = path.join(appRoot, "hooks", "after-prepare", "Fabric-build-xcode.js");
-        fs.writeFileSync(scriptPath, scriptContent);
     }
 };
 `;
+        console.log("Writing 'nativescript-fabric-xcode.js' to " + appRoot + "hooks/after-prepare");
+        var scriptPath = path.join(appRoot, "hooks", "after-prepare", "nativescript-fabric-xcode.js");
+        fs.writeFileSync(scriptPath, scriptContent);
     } catch (e) {
-        console.log("Failed to install Fabric-build-xcode hook.");
+        console.log("Failed to install nativescript-fabric-xcode hook.");
         console.log(e);
         throw e;
     }
@@ -286,8 +292,8 @@ function writePodFile(result) {
     try {
         fs.writeFileSync(directories.ios + '/Podfile',
             `use_frameworks!
-pod 'Fabric'
-pod 'Crashlytics'
+pod 'Fabric', '${FABRIC_IOS_FABRIC}'
+pod 'Crashlytics', '${FABRIC_IOS_CRASHLYTICS}'
 # Crashlytics works best without bitcode
 post_install do |installer|
     installer.pods_project.targets.each do |target|
@@ -325,19 +331,27 @@ android {
   }
 }
 
+buildscript {
+  repositories {
+    maven { url 'https://maven.fabric.io/public' }
+  }
+}
+
 repositories {
   mavenCentral()
   maven { url 'https://maven.fabric.io/public' }
 }
 
 dependencies {
-  compile('com.crashlytics.sdk.android:crashlytics:2.6.8@aar') {
+  compile('com.crashlytics.sdk.android:crashlytics:${FABRIC_ANDROID_CRASHLYTICS}@aar') {
     transitive = true;
   }
-  compile('com.crashlytics.sdk.android:answers:1.4.1@aar') {
+  compile('com.crashlytics.sdk.android:answers:${FABRIC_ANDROID_ANSWERS}@aar') {
     transitive = true;
   }
 }
+
+apply plugin: "io.fabric"
 
 `);
         console.log('Successfully created Android (include.gradle) file.');
@@ -357,94 +371,125 @@ function writeFabricServiceGradleHook(config) {
         if (!fs.existsSync(path.join(appRoot, "hooks"))) {
             fs.mkdirSync(path.join(appRoot, "hooks"));
         }
-        if (!fs.existsSync(path.join(appRoot, "hooks", "before-prepare"))) {
-            fs.mkdirSync(path.join(appRoot, "hooks", "before-prepare"));
+        if (!fs.existsSync(path.join(appRoot, "hooks", "after-prepare"))) {
+            fs.mkdirSync(path.join(appRoot, "hooks", "after-prepare"));
         }
         var scriptContent =
             `
 var path = require("path");
-var fs;
+var fs = require("fs");
 module.exports = function($logger, $projectData, hookArgs) {
   var platform = hookArgs.platform.toLowerCase();
 
-  return new Promise(function(resolve, reject) {
-    if (platform === 'android') {
-        /*
-        if (hookArgs && hookArgs.config && hookArgs.config.changesInfo) {
-          hookArgs.config.changesInfo.appResourcesChanged = true;
-          hookArgs.config.changesInfo.configChanged = true;
-          hookArgs.config.changesInfo.nativeChanged = true;
-        }*/
-        // hack for node resolution not working in some cases
-        try {
-          fs = require("fs-extra");
-        } catch (ignored) {
-          fs = require("../../node_modules/nativescript-fabric/node_modules/fs-extra/lib/index.js");
-        }
+  function updateAppGradleScript(file) {
+    var appBuildGradleContent = fs.readFileSync(file).toString();
+    if (!appBuildGradleContent.match(/.*fabric.*/)) {
+      $logger.trace("Configuring Fabric for Android");
+      var search = -1;
 
-        var apiKey = "${config.api_key}";
-        var apiSecret = "${config.api_secret}";
-        var gradleScriptDir = path.join(__dirname, "..", "..", 'platforms', 'android');
-        var settingsJson = path.join(__dirname, "..", "..", "platforms", "android", "src", "main", "res", "fabric.properties");
-        var gradleScript = path.join(gradleScriptDir, 'build.gradle');
-        fs.ensureDir(gradleScriptDir, function(err) {
+      search = appBuildGradleContent.indexOf("repositories {", 0);
+      if (search == -1) {
+          return;
+      }
+      appBuildGradleContent = appBuildGradleContent.substr(0, search + 14) + '	    maven { url "https://maven.fabric.io/public" }\\n' + appBuildGradleContent.substr(search + 14);
 
-            if (err) {
-              $logger.error(err);
-              reject();
-            }
+      // TODO add to buildTypes entry
+      // appBuildGradleContent = appBuildGradleContent + '\\ndebug { \\n   ext.enableCrashlytics = false\\n}\\n';
 
-            var buildGradleContent = fs.readFileSync(gradleScript).toString();
-            if (!buildGradleContent.match(/.*fabric.*/)) {
-                $logger.trace("Configuring Fabric for Android");
-                var search = -1;
+      search = appBuildGradleContent.indexOf("apply plugin: \\"com.android.application\\"");
+      if (search == -1) {
+          return;
+      }
+      appBuildGradleContent = appBuildGradleContent.substr(0, search + 39) + '\\napply plugin: "io.fabric"\\n' + appBuildGradleContent.substr(search + 39);
 
-                search = buildGradleContent.indexOf("repositories", 0);
-                if (search == -1) {
-                    return;
-                }
-                search = buildGradleContent.indexOf("}", search);
-                buildGradleContent = buildGradleContent.substr(0, search - 1) + '	    maven { url "https://maven.fabric.io/public" }\\n' + buildGradleContent.substr(search - 1);
+      fs.writeFileSync(file, appBuildGradleContent);
+      $logger.trace('Written build.gradle');
 
-                search = buildGradleContent.indexOf("dependencies", search);
-                if (search == -1) {
-                    return;
-                }
-                search = buildGradleContent.indexOf("}", search);
-                if (search == -1) {
-                    return;
-                }
-                buildGradleContent = buildGradleContent.substr(0, search - 1) + '	    classpath "io.fabric.tools:gradle:1.15.2"\\n' + buildGradleContent.substr(search - 1);
-
-                search = buildGradleContent.indexOf("apply plugin: \\"com.android.application\\"", search);
-                if (search == -1) {
-                    return;
-                }
-                buildGradleContent = buildGradleContent.substr(0, search + 39) + '\\napply plugin: "io.fabric"\\n' + buildGradleContent.substr(search + 39);
-
-                fs.writeFileSync(gradleScript, buildGradleContent);
-                $logger.trace('Written build.gradle');
-
-                var propertiesContent = '# Contains API Secret used to validate your application. Commit to internal source control; avoid making secret public\\n';
-                propertiesContent+='apiKey = ' + apiKey + '\\n';
-                propertiesContent+='apiSecret = ' + apiSecret + '\\n';
-                fs.writeFileSync(settingsJson, propertiesContent);
-                $logger.trace('Written fabric.properties');
-              }
-
-        });
-        resolve();
-    } else {
-      resolve();
     }
-  });
+    if (appBuildGradleContent.indexOf("buildMetadata.finalizedBy(copyMetadata)") === -1) {
+      appBuildGradleContent = appBuildGradleContent.replace("ensureMetadataOutDir.finalizedBy(buildMetadata)", "ensureMetadataOutDir.finalizedBy(buildMetadata)\\n\\t\\tbuildMetadata.finalizedBy(copyMetadata)");
+      appBuildGradleContent += \`
+task copyMetadata {
+  doLast {
+    copy {
+        from "$projectDir/src/main/assets/metadata"
+        def toDir = project.hasProperty("release") ? "release" : "debug";
+        if (new File("$projectDir/build/intermediates/assets").listFiles() != null) {
+          toDir = new File("$projectDir/build/intermediates/assets").listFiles()[0].name
+          if (toDir != 'debug' && toDir != 'release') {
+            toDir += "/release"
+          }
+        }
+        into "$projectDir/build/intermediates/assets/" + toDir + "/metadata"
+    }
+  }
+}
+\`;
+      fs.writeFileSync(file, appBuildGradleContent);
+      $logger.trace('Written build.gradle');
+    }
+  }
+
+  function updateGradleScript(file) {
+    var buildGradleContent = fs.readFileSync(file).toString();
+    if (!buildGradleContent.match(/.*fabric.*/)) {
+      $logger.trace("Configuring Fabric for Android");
+      var search = -1;
+
+      search = buildGradleContent.indexOf("repositories", 0);
+      if (search == -1) {
+          return;
+      }
+      search = buildGradleContent.indexOf("}", search);
+      buildGradleContent = buildGradleContent.substr(0, search - 1) + '	    maven { url "https://maven.fabric.io/public" }\\n' + buildGradleContent.substr(search - 1);
+
+      search = buildGradleContent.indexOf("dependencies", search);
+      if (search == -1) {
+          return;
+      }
+      search = buildGradleContent.indexOf("}", search);
+      if (search == -1) {
+          return;
+      }
+      buildGradleContent = buildGradleContent.substr(0, search - 1) + '	    classpath "io.fabric.tools:gradle:${FABRIC_GRADLE_TOOLS}"\\n' + buildGradleContent.substr(search - 1);
+
+      fs.writeFileSync(file, buildGradleContent);
+      $logger.trace('Written build.gradle');
+    }
+  }
+
+  if (platform === 'android') {
+
+      var apiKey = "${config.api_key}";
+      var apiSecret = "${config.api_secret}";
+      var androidPlatformDir = path.join(__dirname, "..", "..", 'platforms', 'android');
+      var androidAppPlatformDir = path.join(__dirname, "..", "..", 'platforms', 'android', 'app');
+      var gradleScript = path.join(androidPlatformDir, 'build.gradle');
+      var gradleAppScript = path.join(androidAppPlatformDir, 'build.gradle');
+
+      if (fs.existsSync(gradleAppScript)) {
+        updateAppGradleScript(gradleAppScript);
+        updateGradleScript(gradleScript);
+      } else {
+        updateGradleScript(gradleScript);
+      }
+
+      var settingsJson = path.join(__dirname, "..", "..", "platforms", "android", "app", "src", "main", "res", "fabric.properties");
+
+      var propertiesContent = '# Contains API Secret used to validate your application. Commit to internal source control; avoid making secret public\\n';
+      propertiesContent+='apiKey = ' + apiKey + '\\n';
+      propertiesContent+='apiSecret = ' + apiSecret + '\\n';
+      fs.writeFileSync(settingsJson, propertiesContent);
+      $logger.trace('Written fabric.properties');
+
+  }
 };
 `;
-        console.log("Writing 'Fabric-build-gradle.js' to " + appRoot + "hooks/before-prepare");
-        var scriptPath = path.join(appRoot, "hooks", "before-prepare", "Fabric-build-gradle.js");
+        console.log("Writing 'nativescript-fabric-gradle.js' to " + appRoot + "hooks/after-prepare");
+        var scriptPath = path.join(appRoot, "hooks", "after-prepare", "nativescript-fabric-gradle.js");
         fs.writeFileSync(scriptPath, scriptContent);
     } catch (e) {
-        console.log("Failed to install Fabric-build-gradle hook.");
+        console.log("Failed to install nativescript-fabric-gradle hook.");
         console.log(e);
         throw e;
     }
@@ -461,9 +506,5 @@ function isSelected(value) {
 }
 
 function isPresent(value) {
-
-
-
-
     return value !== undefined;
 }

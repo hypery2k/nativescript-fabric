@@ -1,14 +1,17 @@
 import { AppiumDriver, createDriver, SearchOptions } from "nativescript-dev-appium";
-import { assert } from "chai";
+import { isSauceLab, runType } from "nativescript-dev-appium/lib/parser";
+import { expect } from "chai";
+import "mocha";
 
-let isAndroid = process.env.npm_config_runType.includes("android");
-let isSauceRun = process.env.npm_config_sauceLab;
+const isSauceRun = isSauceLab;
+const isAndroid: string = runType.includes("android");
+
 
 // CONFIG CONSTANTS
 const OVERALL_TIMEOUT = 800000;
 const WAIT_TIMEOUT = 100000;
 
-describe("sample scenario", () => {
+describe("sample scenario", async function () {
   const defaultWaitTime = 5000;
   let driver: AppiumDriver;
 

@@ -1,4 +1,4 @@
-import { ErrorHandler } from '@angular/core';
+import { ErrorHandler, NgZone } from '@angular/core';
 /**
  * @name FabricErrorHandler
  * @description
@@ -39,8 +39,9 @@ import { ErrorHandler } from '@angular/core';
  *
  * More information about Angular's [`ErrorHandler`](https://angular.io/docs/ts/latest/api/core/index/ErrorHandler-class.html).
  */
-export declare class FabricErrorHandler extends ErrorHandler {
-    constructor();
+export declare class FabricErrorHandler implements ErrorHandler {
+    private ngZone;
+    constructor(ngZone: NgZone);
     /**
      * @internal
      */

@@ -64,7 +64,6 @@ __build__/**
 !karma*.js
 !test-main.js
 src/lib
-src/platforms
 src/hooks
 src/node_modules
 src/*.js
