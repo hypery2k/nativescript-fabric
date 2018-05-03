@@ -1,33 +1,30 @@
 {
     "compilerOptions": {
-        "baseUrl": ".",
-        "noImplicitAny": false,
-        "module": "commonjs",
         "target": "es5",
-        "moduleResolution": "node",
+        "module": "commonjs",
+        "declaration": true,
+        "removeComments": true,
+        "noLib": false,
         "emitDecoratorMetadata": true,
         "experimentalDecorators": true,
-        "declaration": true,
-        "sourceMap": false,
-        "noEmitHelpers": true,
-        "noEmitOnError": true,
-        "skipLibCheck": true,
         "lib": [
-            "dom",
-            "es2015",
-            "es2015.iterable"
+          "es6",
+          "dom"
         ],
-        "types": []
-    },
-    "angularCompilerOptions": {
-        "genDir": ".",
-        "strictMetadataEmit": true,
-        "skipTemplateCodegen": true
+        "sourceMap": true,
+        "pretty": true,
+        "allowUnreachableCode": false,
+        "allowUnusedLabels": false,
+        "noEmitHelpers": true,
+        "noEmitOnError": false,
+        "noImplicitAny": false,
+        "noImplicitReturns": true,
+        "noImplicitUseStrict": false,
+        "noFallthroughCasesInSwitch": true
     },
     "exclude": [
         "node_modules",
-        "platforms",
-        "**/*.aot.ts",
         "test"
-    ]
+    ],
+    "compileOnSave": false
 }

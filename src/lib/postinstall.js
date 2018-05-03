@@ -2819,9 +2819,12 @@ var directories = {
 console.log('NativeScript Fabric Plugin Installation');
 
 var appRoot = "../../";
+var packageJsonPath = path.join(appRoot, "app", "package.json");
+
+console.log('Applying to app package.json: ' + packageJsonPath);
+
 var pluginConfigFile = "fabric.json";
 var pluginConfigPath = path.join(appRoot, pluginConfigFile);
-var packageJsonPath = path.join(appRoot, "app", "package.json");
 var config = {};
 
 function mergeConfig(result) {
@@ -3148,8 +3151,6 @@ dependencies {
     transitive = true;
   }
 }
-
-apply plugin: "io.fabric"
 
 `);
         console.log('Successfully created Android (include.gradle) file.');

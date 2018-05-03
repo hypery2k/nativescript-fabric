@@ -25,35 +25,38 @@ timeout(150) {
         checkout scm
       }
 
-      dir('src') {
-        stage('Build') {
-          sh "npm run clean && npm run build"
-        }
+      stage('Build') {
+        sh "cd publish && npm run setup-dev-env"
+        sh "cd demo && rm -rf hooks/ node_modules/ platforms/ && npm i"
+        sh "cd demo-angular && rm -rf hooks/ node_modules/ platforms/ && npm i"
+      }
 
-        stage('Webpack') {
-          parallel demo: {
-            sh "cd ../demo && rm -rf hooks/ node_modules/ platforms/ && npm i && npm run build-ios-bundle && npm run build-android-bundle"
-          }, demoAngular: {
-            sh "cd ../demo-angular && rm -rf hooks/ node_modules/ platforms/ && npm i && npm run build-ios-bundle && npm run build-android-bundle"
-          },
-          failFast: true
-        }
+      stage('Webpack') {
+        parallel demo: {
+          sh "cd demo  && npm run build-ios-bundle && npm run build-android-bundle"
+        }, demoAngular: {
+          sh "cd demo-angular && npm run build-ios-bundle && npm run build-android-bundle"
+        },
+        failFast: true
+      }
 
-        stage('Test') {
-          parallel unit:{
-            sh "npm run test"
-          }, iOS: {
-            sh "cd ../demo && npm run ci.ios.build" //FIXME && tns test ios --justlaunch --emulator"
-          }, Android: {
-            sh "cd ../demo && npm run ci.android.build" //FIXME && tns test android --justlaunch --emulator"
-          },
-          failFast: true
-          // junit '../demo/target/junit-report/TEST-*.xml'
-        }
+      stage('Test') {
+        parallel unit:{
+          sh "cd src && npm run test"
+        }, iOS: {
+          sh "cd demo && npm run ci.ios.build" //FIXME && tns test ios --justlaunch --emulator"
+        }, Android: {
+          sh "cd demo && npm run ci.android.build" //FIXME && tns test android --justlaunch --emulator"
+        },
+        failFast: true
+        // junit '../demo/target/junit-report/TEST-*.xml'
       }
 
       stage('Publish NPM snapshot') {
         nodeJS.publishSnapshot('src', buildNumber, branchName)
+        def packageJSON = readJSON file: './src/package.json';
+        sh "cd publish/package && mv *.tgz nativescript-fabric-v${packageJSON.version}_build${buildNumber}.tgz"
+        archiveArtifacts artifacts: 'publish/package/*.tgz'
       }
 
     } catch (e) {

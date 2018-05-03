@@ -42,6 +42,8 @@ Thumbs.db
 /tsd_typings/
 
 # Dist #
+/publish/package
+/publish/src
 /dist
 /public/__build__/
 /src/*/__build__/

@@ -12,6 +12,6 @@ hooks/
 target/
 lib/*.es6.js
 test/
-tsconfig.json
-references.d.ts
+/platforms/android/**/*
+!platforms/android/include.gradle
 platforms/android/libraryproject/
