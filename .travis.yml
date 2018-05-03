@@ -91,7 +91,7 @@ matrix:
        - npm i -g appium
        - cd publish && npm run setup-dev-env && cd ..
        - cd demo && npm i
-       - travis_retry npm run e2e -- --runType android23 --sauceLab --reuseDevice --appPath $ANDROID_PACKAGE --appPackage org.nativescript.demo
+       - travis_retry npm run e2e -- --runType android25 --sauceLab --reuseDevice --appPath $ANDROID_PACKAGE --appPackage org.nativescript.demo
    - os: linux
      env:
        - iOS="10"

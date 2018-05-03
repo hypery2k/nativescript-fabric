@@ -44,19 +44,19 @@ timeout(150) {
         parallel unit:{
           sh "cd src && npm run test"
         }, iOS: {
-          sh "cd demo && npm run ci.ios.build" //FIXME && tns test ios --justlaunch --emulator"
+          sh "cd demo && npm run ci.ios.build && tns test ios --justlaunch --emulator"
         }, Android: {
-          sh "cd demo && npm run ci.android.build" //FIXME && tns test android --justlaunch --emulator"
+          sh "cd demo && npm run ci.android.build && tns test android --justlaunch --emulator"
         },
         failFast: true
-        // junit '../demo/target/junit-report/TEST-*.xml'
+        junit 'demo/target/junit-report/TEST-*.xml'
       }
 
       stage('Publish NPM snapshot') {
-        nodeJS.publishSnapshot('src', buildNumber, branchName)
         def packageJSON = readJSON file: './src/package.json';
-        sh "cd publish/package && mv *.tgz nativescript-fabric-v${packageJSON.version}_build${buildNumber}.tgz"
+        sh "cd publish/package && mv *.tgz nativescript-fabric_v${packageJSON.version}-build${buildNumber}.tgz"
         archiveArtifacts artifacts: 'publish/package/*.tgz'
+        nodeJS.publishSnapshot('src', buildNumber, branchName)
       }
 
     } catch (e) {
