@@ -115,13 +115,35 @@ NgModule({
 ```
 # Known Issues
 
-###
+## com.android.ide.common.process.ProcessException
+
+```
+FAILURE: Build failed with an exception.
+
+* What went wrong:
+Execution failed for task ':app:transformClassesWithDexForF0F1F2F3F4F5Debug'.
+> com.android.build.api.transform.TransformException: com.android.ide.common.process.ProcessException: java.util.concurrent.ExecutionException: com.android.dex.DexIndexOverflowException: Cannot merge new index 69013 into a non-jumbo instruction!nto a non-jumbo instruction!
+
+```
+set the following in your app.gradle:
+```
+android {
+    ...
+    dexOptions {
+        jumboMode true
+    }
+
+}
+```
+
+## XML Parsing error
 
 ```
 Error:/app/build/intermediates/res/merged/debug/values/com_crashlytics_build_id.xml uncompiled XML file passed as argument. Must be compiled first into .flat file.
 ```
 
 Try adding:
-
+```
 android.enableAapt2 = false
-to your gradle.properties file.
+```
+to your `gradle.properties` file.
