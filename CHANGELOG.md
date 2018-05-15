@@ -1,3 +1,8 @@
+<a name="2.0.1"></a>
+## [2.0.1](https://github.com/hypery2k/nativescript-fabric/compare/v2.0.0...v2.0.1) (2018-05-15)
+
+
+
 <a name="2.0.0"></a>
 # [2.0.0](https://github.com/hypery2k/nativescript-fabric/compare/v1.0.6...v2.0.0) (2018-05-15)
 
