@@ -9,7 +9,7 @@
         "end2end:demo": "cd ../demo && rm -rf hooks/ node_modules/ platforms/ package-lock.json && npm run build.plugin && npm i && npm run build-android-bundle && npm run build-ios-bundle && tns test android --justlaunch && tns test ios --emulator --justlaunch",
         "end2end:demo-ng": "cd ../demo-angular && rm -rf hooks/ node_modules/ platforms/ package-lock.json && npm run build.plugin && npm i && npm run build-android-bundle",
         "end2end": "npm run setup-dev-env && npm run end2end:demo && npm run end2end:demo-ng",
-        "changelog": "conventional-changelog -p angular -i ../CHANGELOG.md -s -r 0",
+        "changelog": "cd ../src && conventional-changelog -p angular -i ../CHANGELOG.md -s -r 0",
         "changelog:add": "git add ../CHANGELOG.md && git commit -m 'chore(changelog): Updated CHANGELOG.md'",
         "release:pre": "cd ../src && npm run clean && npm run test && cd ../publish && npm run end2end",
         "release:post": "npm run changelog && npm run changelog:add",
@@ -18,7 +18,7 @@
         "release:patch": "npm run release:pre && cd ../src && npm version patch && cd ../publish && npm run release:post && git push origin && git push origin --tags && npm run version-and-push",
         "version-and-push": "git push origin && git push origin --tags && npm run merge-and-publish",
         "premerge-and-publish": "git checkout master && git merge develop",
-        "merge-and-publish": "mv ../README.md .&& mv ../LICENSE . && npm publish && git reset --hard && git clean -f",
+        "merge-and-publish": "mv ../README.md .&& mv ../LICENSE . && cd ../src && npm publish && git reset --hard && git clean -f",
         "postmerge-and-publish": "git checkout develop"
     },
     "devDependencies": {
