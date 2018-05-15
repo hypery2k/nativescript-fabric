@@ -327,11 +327,7 @@ function writeGradleFile() {
         fs.writeFileSync(directories.android + '/include.gradle',
             `
 android {
-  productFlavors {
-    "fabric" {
-      dimension "fabric"
-    }
-  }
+
 }
 
 buildscript {

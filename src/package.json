@@ -9,7 +9,7 @@
         "setup": "node lib/postinstall.js setup",
         "config": "node lib/postinstall.js config",
         "prebuild": "npm run tslint",
-        "build": "npm run ngc && npm run tsc && npm run build.native",
+        "build": "npm run ngc && npm run tsc",
         "build.native": "node scripts/build-native.js",
         "tsc": "tsc",
         "ngc": "node --max-old-space-size=8192 ./node_modules/.bin/ngc",
