@@ -1,5 +1,5 @@
-<a name="2.0.0"></a>
-# [2.0.0](https://github.com/hypery2k/nativescript-fabric/compare/v1.0.6...v2.0.0) (2018-05-15)
+<a name="1.0.0"></a>
+# [1.0.0](https://github.com/hypery2k/nativescript-fabric/compare/v1.0.6...v1.0.0) (2018-05-15)
 
 
 ### Bug Fixes
@@ -15,7 +15,14 @@
 
 ### Features
 
+* **NativeScript 4:** Only support TNS 4+ ([95bc9d9](https://github.com/hypery2k/nativescript-fabric/commit/95bc9d9))
+* **NativeScript 4:** Only support TNS 4+ ([d9da46d](https://github.com/hypery2k/nativescript-fabric/commit/d9da46d))
 * **TNS3:** Change plugin structure to Telerik recommendations ([2be64f8](https://github.com/hypery2k/nativescript-fabric/commit/2be64f8)), closes [#59](https://github.com/hypery2k/nativescript-fabric/issues/59)
+
+
+### BREAKING CHANGES
+
+* **NativeScript 4:** This version needs NativeScript 4+
 
 
 
