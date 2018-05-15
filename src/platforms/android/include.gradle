@@ -1,10 +1,6 @@
 
 android {
-  productFlavors {
-    "fabric" {
-      dimension "fabric"
-    }
-  }
+  
 }
 
 buildscript {
