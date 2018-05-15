@@ -1,3 +1,24 @@
+<a name="2.0.0"></a>
+# [2.0.0](https://github.com/hypery2k/nativescript-fabric/compare/v1.0.6...v2.0.0) (2018-05-15)
+
+
+### Bug Fixes
+
+* **android-error:** Solve build error ([3d0b6c4](https://github.com/hypery2k/nativescript-fabric/commit/3d0b6c4)), closes [#117](https://github.com/hypery2k/nativescript-fabric/issues/117) [#118](https://github.com/hypery2k/nativescript-fabric/issues/118)
+* **build:** Adding missing file ([8d0092c](https://github.com/hypery2k/nativescript-fabric/commit/8d0092c))
+* **build:** Corrected Android build ([7f49d1f](https://github.com/hypery2k/nativescript-fabric/commit/7f49d1f)), closes [#127](https://github.com/hypery2k/nativescript-fabric/issues/127)
+* **build:** Resolve build error ([d317fff](https://github.com/hypery2k/nativescript-fabric/commit/d317fff)), closes [#125](https://github.com/hypery2k/nativescript-fabric/issues/125)
+* **build-error:** Resolve Android build errorsee [#114](https://github.com/hypery2k/nativescript-fabric/issues/114) and [#118](https://github.com/hypery2k/nativescript-fabric/issues/118) ([f3b22d9](https://github.com/hypery2k/nativescript-fabric/commit/f3b22d9))
+* **parse-error:** Solve JSON parse error ([9053134](https://github.com/hypery2k/nativescript-fabric/commit/9053134))
+* **semver:** Fix semver issues ([b1047de](https://github.com/hypery2k/nativescript-fabric/commit/b1047de))
+
+
+### Features
+
+* **TNS3:** Change plugin structure to Telerik recommendations ([2be64f8](https://github.com/hypery2k/nativescript-fabric/commit/2be64f8)), closes [#59](https://github.com/hypery2k/nativescript-fabric/issues/59)
+
+
+
 <a name="1.0.6"></a>
 ## [1.0.6](https://github.com/hypery2k/nativescript-fabric/compare/v1.0.5...v1.0.6) (2017-07-27)
 
@@ -52,7 +73,7 @@
 
 ### Bug Fixes
 
-* **AoT-Error:** Solve Angular AoT error ([929a5e6](https://github.com/hypery2k/nativescript-fabric/commit/929a5e6))
+* **AoT-Error:** Solve Angular AoT error ([929a5e6](https://github.com/hypery2k/nativescript-fabric/commit/929a5e6)), closes [#75](https://github.com/hypery2k/nativescript-fabric/issues/75)
 
 
 
@@ -101,7 +122,7 @@
 
 ### Features
 
-* **errorhandler-android:** Adding customer Fabric ErrorHandler ([d31128e](https://github.com/hypery2k/nativescript-fabric/commit/d31128e))
+* **errorhandler-android:** Adding customer Fabric ErrorHandler ([d31128e](https://github.com/hypery2k/nativescript-fabric/commit/d31128e)), closes [#36](https://github.com/hypery2k/nativescript-fabric/issues/36)
 
 
 
@@ -111,7 +132,7 @@
 
 ### Bug Fixes
 
-* **iOS:** Fix init error ([a9e1014](https://github.com/hypery2k/nativescript-fabric/commit/a9e1014))
+* **iOS:** Fix init error ([a9e1014](https://github.com/hypery2k/nativescript-fabric/commit/a9e1014)), closes [#32](https://github.com/hypery2k/nativescript-fabric/issues/32)
 * **iOS:** Fix Segmentation fault ([85f5881](https://github.com/hypery2k/nativescript-fabric/commit/85f5881)), closes [#46](https://github.com/hypery2k/nativescript-fabric/issues/46)
 * **ios-bug:** Fix platform agnostic bug (see [#32](https://github.com/hypery2k/nativescript-fabric/issues/32) and [#38](https://github.com/hypery2k/nativescript-fabric/issues/38)) ([0013de8](https://github.com/hypery2k/nativescript-fabric/commit/0013de8))
 * **ios-bug:** Fix platform agnostic bug (see [#32](https://github.com/hypery2k/nativescript-fabric/issues/32) and [#38](https://github.com/hypery2k/nativescript-fabric/issues/38)) ([729851e](https://github.com/hypery2k/nativescript-fabric/commit/729851e))
@@ -119,8 +140,8 @@
 
 ### Features
 
-* **e2e-testing:** adding sample test app ([#12](https://github.com/hypery2k/nativescript-fabric/issues/12)) ([0e3199a](https://github.com/hypery2k/nativescript-fabric/commit/0e3199a))
-* **e2e-testing:** adding unit tests ([#12](https://github.com/hypery2k/nativescript-fabric/issues/12)) ([0de95d3](https://github.com/hypery2k/nativescript-fabric/commit/0de95d3))
+* **e2e-testing:** adding sample test app ([#12](https://github.com/hypery2k/nativescript-fabric/issues/12)) ([0e3199a](https://github.com/hypery2k/nativescript-fabric/commit/0e3199a)), closes [#32](https://github.com/hypery2k/nativescript-fabric/issues/32)
+* **e2e-testing:** adding unit tests ([#12](https://github.com/hypery2k/nativescript-fabric/issues/12)) ([0de95d3](https://github.com/hypery2k/nativescript-fabric/commit/0de95d3)), closes [#32](https://github.com/hypery2k/nativescript-fabric/issues/32)
 
 
 
@@ -137,8 +158,8 @@
 
 ### Features
 
-* **error-handling:** Wrap error handling in try-catch block ([9cf0938](https://github.com/hypery2k/nativescript-fabric/commit/9cf0938))
-* **improve-error-handling:** Handle not intialized errors better ([66948df](https://github.com/hypery2k/nativescript-fabric/commit/66948df))
+* **error-handling:** Wrap error handling in try-catch block ([9cf0938](https://github.com/hypery2k/nativescript-fabric/commit/9cf0938)), closes [#38](https://github.com/hypery2k/nativescript-fabric/issues/38) [#32](https://github.com/hypery2k/nativescript-fabric/issues/32)
+* **improve-error-handling:** Handle not intialized errors better ([66948df](https://github.com/hypery2k/nativescript-fabric/commit/66948df)), closes [#37](https://github.com/hypery2k/nativescript-fabric/issues/37)
 
 
 
@@ -173,7 +194,7 @@
 
 ### Bug Fixes
 
-* **type-error:** Fix type conversion error ([f06ebcc](https://github.com/hypery2k/nativescript-fabric/commit/f06ebcc))
+* **type-error:** Fix type conversion error ([f06ebcc](https://github.com/hypery2k/nativescript-fabric/commit/f06ebcc)), closes [#15](https://github.com/hypery2k/nativescript-fabric/issues/15)
 
 
 
@@ -213,12 +234,12 @@
 
 ### Features
 
-* **answers:** Support answers and custom events ([9cc05dd](https://github.com/hypery2k/nativescript-fabric/commit/9cc05dd))
+* **answers:** Support answers and custom events ([9cc05dd](https://github.com/hypery2k/nativescript-fabric/commit/9cc05dd)), closes [#2](https://github.com/hypery2k/nativescript-fabric/issues/2)
 * **config:** Ease setup for both iOS and Android ([f1359b2](https://github.com/hypery2k/nativescript-fabric/commit/f1359b2))
 * **config:** Fix build error ([1f6044d](https://github.com/hypery2k/nativescript-fabric/commit/1f6044d))
 * **ios:** Expose App Delegate for iOS ([5de20c4](https://github.com/hypery2k/nativescript-fabric/commit/5de20c4))
 * **iOS:** Basic iOS implementation ([62a6247](https://github.com/hypery2k/nativescript-fabric/commit/62a6247))
-* **ios-support:** Support iOS platform ([92b9063](https://github.com/hypery2k/nativescript-fabric/commit/92b9063))
+* **ios-support:** Support iOS platform ([92b9063](https://github.com/hypery2k/nativescript-fabric/commit/92b9063)), closes [#11](https://github.com/hypery2k/nativescript-fabric/issues/11)
 * **setup:** Corrected Fabric setup for android ([1e15014](https://github.com/hypery2k/nativescript-fabric/commit/1e15014))
 
 
