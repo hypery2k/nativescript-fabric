@@ -18,7 +18,7 @@
         "release:patch": "npm run release:pre && cd ../src && npm version patch && cd ../publish && npm run release:post && git push origin && git push origin --tags && npm run version-and-push",
         "version-and-push": "git push origin && git push origin --tags && npm run merge-and-publish",
         "premerge-and-publish": "git checkout master && git merge develop",
-        "merge-and-publish": "mv ../README.md .&& mv ../LICENSE . && cd ../src && npm publish && git reset --hard && git clean -f",
+        "merge-and-publish": "mv ../README.md ../src && mv ../LICENSE ../src && cd ../src && npm publish && git reset --hard && git clean -f",
         "postmerge-and-publish": "git checkout develop"
     },
     "devDependencies": {
