@@ -1,6 +1,6 @@
 env:
  global:
-   - NATIVESCRIPT_CLI_VERSION='4'
+   - NATIVESCRIPT_CLI_VERSION='4.1'
    - ANDROID_PACKAGE='demo-debug.apk'
    - ANDROID_PACKAGE_FOLDER=$TRAVIS_BUILD_DIR/demo/platforms/android/build/outputs/apk/debug
    - ANDROID_SAUCE_STORAGE="https://saucelabs.com/rest/v1/storage/$SAUCE_USER/$ANDROID_PACKAGE?overwrite=true"

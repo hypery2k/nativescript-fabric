@@ -37,7 +37,7 @@
         "xmldom": "0.1.27"
     },
     "peerDependencies": {
-        "tns-core-modules": ">=4.0.0"
+        "tns-core-modules": ">=4.1.1"
     },
     "optionalPeerDependencies": {
         "@angular/common": ">=5.0.0 || >=5.1.0 || >=5.2.0",
@@ -75,8 +75,8 @@
         "rimraf": "^2.6.2",
         "rxjs": "~5.5.0",
         "semver": "^5.5.0",
-        "tns-core-modules": "~4.0.0",
-        "tns-platform-declarations": "~3.4.0",
+        "tns-core-modules": "~4.1.0",
+        "tns-platform-declarations": "~4.1.0",
         "tslint": "5.4.3",
         "tslint-eslint-rules": "4.1.0",
         "typescript": "2.4.2",
