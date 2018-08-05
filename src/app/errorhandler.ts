@@ -57,6 +57,6 @@ export class FabricErrorHandler implements ErrorHandler {
       Fabric.logError(err);
     } catch (e) { }
     // IMPORTANT: Rethrow the error otherwise it gets swallowed
-    throw err;
+    // TODO-make me configurable throw err;
   }
 }
