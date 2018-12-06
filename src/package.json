@@ -32,7 +32,7 @@
         "format": "0.2.2",
         "nativescript-hook": "0.2.2",
         "prompt-lite": "0.1.1",
-        "simple-plist": "0.2.1",
+        "simple-plist": "1.0.0",
         "xcode": "1.0.0",
         "xmldom": "0.1.27"
     },
