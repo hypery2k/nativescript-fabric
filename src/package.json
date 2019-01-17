@@ -33,7 +33,7 @@
         "nativescript-hook": "0.2.2",
         "prompt-lite": "0.1.1",
         "simple-plist": "0.2.1",
-        "xcode": "1.0.0",
+        "xcode": "2.0.0",
         "xmldom": "0.1.27"
     },
     "peerDependencies": {
