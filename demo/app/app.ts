@@ -4,6 +4,7 @@ You can use this file to perform app-level initialization, but the primary
 purpose of the file is to pass control to the app’s first module.
 */
 
+import './app.scss';
 import './bundle-config';
 import * as app from 'application';
 import { Fabric } from 'nativescript-fabric';

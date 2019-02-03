@@ -4,7 +4,7 @@ import { expect } from "chai";
 import "mocha";
 
 const isSauceRun = isSauceLab;
-const isAndroid: string = runType.includes("android");
+const isAndroid: boolean = runType.includes("android");
 
 
 // CONFIG CONSTANTS
