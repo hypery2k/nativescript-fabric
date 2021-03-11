@@ -34,7 +34,7 @@
         "prompt-lite": "0.1.1",
         "simple-plist": "0.2.1",
         "xcode": "1.0.0",
-        "xmldom": "0.1.27"
+        "xmldom": "0.5.0"
     },
     "peerDependencies": {
         "tns-core-modules": ">=4.0.0"
