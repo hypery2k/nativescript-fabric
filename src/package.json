@@ -30,7 +30,7 @@
     "typings": "index.d.ts",
     "dependencies": {
         "format": "0.2.2",
-        "nativescript-hook": "0.2.2",
+        "nativescript-hook": "0.2.5",
         "prompt-lite": "0.1.1",
         "simple-plist": "0.2.1",
         "xcode": "1.0.0",
